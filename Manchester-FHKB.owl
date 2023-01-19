@@ -8,4 +8,192 @@
 
 <http://www.semanticweb.org/lihekun/Manchester-FHKB> rdf:type owl:Ontology .
 
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFather
+:hasFather rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasParent ;
+           owl:inverseOf :isFatherOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasMother
+:hasMother rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasParent ;
+           owl:inverseOf :isMotherOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasParent
+:hasParent rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isFatherOf
+:isFatherOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherOf
+:isMotherOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isParentOf
+:isParentOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#birthYear
+:birthYear rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#familyName
+:familyName rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#firstGivenName
+:firstGivenName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#secondGivenName
+:secondGivenName rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#DomainEntity
+:DomainEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Femaleness
+:Femaleness rdf:type owl:Class ;
+            rdfs:subClassOf :Sex ;
+            owl:disjointWith :Maleness .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Maleness
+:Maleness rdf:type owl:Class ;
+          rdfs:subClassOf :Sex .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Man
+:Man rdf:type owl:Class ;
+     rdfs:subClassOf :Person .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :DomainEntity .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Sex
+:Sex rdf:type owl:Class ;
+     rdfs:subClassOf :DomainEntity .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Woman
+:Woman rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Alec_John_Archer
+:Alec_John_Archer rdf:type owl:NamedIndividual ,
+                           :Person ;
+                  :birthYear 1927 ;
+                  :familyName "Archer"^^xsd:string ;
+                  :firstGivenName "Alec"^^xsd:string ;
+                  :secondGivenName "John"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charles_Herbert_Rever
+:Charles_Herbert_Rever rdf:type owl:NamedIndividual ,
+                                :Person ;
+                       :birthYear 1895 ;
+                       :familyName "Rever"^^xsd:string ;
+                       :firstGivenName "Charles"^^xsd:string ,
+                                       "Herbert"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Caroline_Jane_Bright
+:Charlotte_Caroline_Jane_Bright rdf:type owl:NamedIndividual ,
+                                         :Person ;
+                                :birthYear 1894 ;
+                                :familyName "Bright"^^xsd:string ;
+                                :firstGivenName "Caroline Jane"^^xsd:string ,
+                                                "Charlotte"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Hewett
+:Charlotte_Hewett rdf:type owl:NamedIndividual ,
+                           :Person ;
+                  :birthYear 1863 ;
+                  :familyName "Hewett"^^xsd:string ;
+                  :firstGivenName "Charlotte"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Clare_Bright
+:Clare_Bright rdf:type owl:NamedIndividual ,
+                       :Person ;
+              :birthYear 1966 ;
+              :familyName "Bright"^^xsd:string ;
+              :firstGivenName "Clare"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#David_Bright
+:David_Bright rdf:type owl:NamedIndividual ,
+                       :Person ;
+              :birthYear 1934 ;
+              :familyName "Bright"^^xsd:string ;
+              :firstGivenName "David"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Dereck_Heath
+:Dereck_Heath rdf:type owl:NamedIndividual ,
+                       :Person ;
+              :birthYear 1927 ;
+              :familyName "Heath"^^xsd:string ;
+              :firstGivenName "Dereck"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Diana_Pool
+:Diana_Pool rdf:type owl:NamedIndividual ,
+                     :Person ;
+            :familyName "Pool"^^xsd:string ;
+            :firstGivenName "Diana"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Eileen_Mary_Rever
+:Eileen_Mary_Rever rdf:type owl:NamedIndividual ,
+                            :Person ;
+                   :birthYear 1929 ;
+                   :familyName "Rever"^^xsd:string ;
+                   :firstGivenName "Eileen"^^xsd:string ;
+                   :secondGivenName "Mary"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Elizabeth_Frances_Jessop
+:Elizabeth_Frances_Jessop rdf:type owl:NamedIndividual ,
+                                   :Person ;
+                          :birthYear 1869 ;
+                          :familyName "Jessop"^^xsd:string ;
+                          :firstGivenName "Elizabeth"^^xsd:string ,
+                                          "Frances"^^xsd:string .
+
+
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
