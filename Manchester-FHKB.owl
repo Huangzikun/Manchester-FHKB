@@ -115,6 +115,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Alec_John_Archer
 :Alec_John_Archer rdf:type owl:NamedIndividual ,
                            :Person ;
+                  :hasFather :James_Alexander_Archer ;
+                  :hasMother :Violet_Heath ;
                   :birthYear 1927 ;
                   :familyName "Archer"^^xsd:string ;
                   :firstGivenName "Alec"^^xsd:string ;
@@ -124,6 +126,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charles_Herbert_Rever
 :Charles_Herbert_Rever rdf:type owl:NamedIndividual ,
                                 :Person ;
+                       :hasFather :William_Rever ;
+                       :hasMother :Elizabeth_Frances_Jessop ;
                        :birthYear 1895 ;
                        :familyName "Rever"^^xsd:string ;
                        :firstGivenName "Charles"^^xsd:string ;
@@ -133,6 +137,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Caroline_Jane_Bright
 :Charlotte_Caroline_Jane_Bright rdf:type owl:NamedIndividual ,
                                          :Person ;
+                                :hasFather :Henry_Edmund_Bright ;
+                                :hasMother :Charlotte_Hewett ;
                                 :birthYear 1894 ;
                                 :familyName "Bright"^^xsd:string ;
                                 :firstGivenName "Charlotte"^^xsd:string ;
@@ -150,6 +156,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Clare_Bright
 :Clare_Bright rdf:type owl:NamedIndividual ,
                        :Person ;
+              :hasFather :Peter_William_Bright ;
+              :hasMother :Diana_Pool ;
               :birthYear 1966 ;
               :familyName "Bright"^^xsd:string ;
               :firstGivenName "Clare"^^xsd:string .
@@ -158,6 +166,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#David_Bright
 :David_Bright rdf:type owl:NamedIndividual ,
                        :Person ;
+              :hasFather :William_George_Bright ;
+              :hasMother :Iris_Ellen_Archer ;
               :birthYear 1934 ;
               :familyName "Bright"^^xsd:string ;
               :firstGivenName "David"^^xsd:string .
@@ -181,6 +191,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Eileen_Mary_Rever
 :Eileen_Mary_Rever rdf:type owl:NamedIndividual ,
                             :Person ;
+                   :hasFather :Charles_Herbert_Rever ;
+                   :hasMother :Violet_Sylvia_Steward ;
                    :birthYear 1929 ;
                    :familyName "Rever"^^xsd:string ;
                    :firstGivenName "Eileen"^^xsd:string ;
@@ -199,6 +211,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ethel_Archer
 :Ethel_Archer rdf:type owl:NamedIndividual ,
                        :Person ;
+              :hasFather :James_Alexander_Archer ;
+              :hasMother :Violet_Heath ;
               :birthYear 1912 ;
               :familyName "Archer"^^xsd:string ;
               :firstGivenName "Ethel"^^xsd:string .
@@ -207,6 +221,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Frederick_Herbert_Bright
 :Frederick_Herbert_Bright rdf:type owl:NamedIndividual ,
                                    :Person ;
+                          :hasFather :Henry_Edmund_Bright ;
+                          :hasMother :Charlotte_Hewett ;
                           :birthYear 1889 ;
                           :familyName "Bright"^^xsd:string ;
                           :firstGivenName "Frederick"^^xsd:string ;
@@ -225,6 +241,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Henry_Edmund_Bright_1887
 :Henry_Edmund_Bright_1887 rdf:type owl:NamedIndividual ,
                                    :Person ;
+                          :hasFather :Henry_Edmund_Bright ;
+                          :hasMother :Charlotte_Hewett ;
                           :birthYear 1887 ;
                           :familyName "Bright"^^xsd:string ;
                           :firstGivenName "Henry"^^xsd:string ;
@@ -234,6 +252,8 @@
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ian_Bright
 :Ian_Bright rdf:type owl:NamedIndividual ,
                      :Person ;
+            :hasFather :John_Bright ;
+            :hasMother :Joyce_Gosport ;
             :birthYear 1959 ;
             :familyName "Bright"^^xsd:string ;
             :firstGivenName "Ian"^^xsd:string .
@@ -241,6 +261,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Iris_Ellen_Archer
 :Iris_Ellen_Archer rdf:type owl:NamedIndividual ;
+                   :hasFather :James_Alexander_Archer ;
+                   :hasMother :Violet_Heath ;
                    :birthYear 1906 ;
                    :familyName "Archer"^^xsd:string ;
                    :firstGivenName "Iris"^^xsd:string ;
@@ -257,6 +279,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Bright
 :James_Bright rdf:type owl:NamedIndividual ;
+              :hasFather :Peter_William_Bright ;
+              :hasMother :Diana_Pool ;
               :birthYear 1964 ;
               :familyName "Bright"^^xsd:string ;
               :firstGivenName "James"^^xsd:string .
@@ -264,6 +288,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Frank_Hayden_Bright
 :James_Frank_Hayden_Bright rdf:type owl:NamedIndividual ;
+                           :hasFather :Henry_Edmund_Bright ;
+                           :hasMother :Charlotte_Hewett ;
                            :birthYear 1891 ;
                            :familyName "Bright"^^xsd:string ;
                            :firstGivenName "James"^^xsd:string ;
@@ -272,6 +298,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Janet_Bright
 :Janet_Bright rdf:type owl:NamedIndividual ;
+              :hasFather :John_Bright ;
+              :hasMother :Joyce_Gosport ;
               :birthYear 1964 ;
               :familyName "Bright"^^xsd:string ;
               :firstGivenName "Janet"^^xsd:string .
@@ -279,6 +307,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#John_Bright
 :John_Bright rdf:type owl:NamedIndividual ;
+             :hasFather :William_George_Bright ;
+             :hasMother :Iris_Ellen_Archer ;
              :birthYear 1930 ;
              :familyName "Bright"^^xsd:string ;
              :firstGivenName "John"^^xsd:string .
@@ -294,6 +324,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Joyce_Archer
 :Joyce_Archer rdf:type owl:NamedIndividual ;
+              :hasFather :James_Alexander_Archer ;
+              :hasMother :Violet_Heath ;
               :birthYear 1921 ;
               :familyName "Archer"^^xsd:string ;
               :firstGivenName "Joyce"^^xsd:string .
@@ -307,6 +339,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Julie_Bright
 :Julie_Bright rdf:type owl:NamedIndividual ;
+              :hasFather :Peter_William_Bright ;
+              :hasMother :Diana_Pool ;
               :birthYear 1966 ;
               :familyName "Bright"^^xsd:string ;
               :firstGivenName "Julie"^^xsd:string .
@@ -314,6 +348,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Kathleen_Minnie_Bright
 :Kathleen_Minnie_Bright rdf:type owl:NamedIndividual ;
+                        :hasFather :Henry_Edmund_Bright ;
+                        :hasMother :Charlotte_Hewett ;
                         :birthYear 1904 ;
                         :familyName "Bright"^^xsd:string ;
                         :firstGivenName "Kathleen"^^xsd:string ;
@@ -322,6 +358,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Leonard_John_Bright
 :Leonard_John_Bright rdf:type owl:NamedIndividual ;
+                     :hasFather :Henry_Edmund_Bright ;
+                     :hasMother :Charlotte_Hewett ;
                      :birthYear 1890 ;
                      :familyName "Bright"^^xsd:string ;
                      :firstGivenName "Leonard"^^xsd:string ;
@@ -337,6 +375,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Margaret_Grace_Rever
 :Margaret_Grace_Rever rdf:type owl:NamedIndividual ;
+                      :hasFather :Charles_Herbert_Rever ;
+                      :hasMother :Violet_Sylvia_Steward ;
                       :birthYear 1934 ;
                       :familyName "Rever"^^xsd:string ;
                       :firstGivenName "Margaret"^^xsd:string ;
@@ -345,6 +385,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Anthony_Heath
 :Mark_Anthony_Heath rdf:type owl:NamedIndividual ;
+                    :hasFather :Dereck_Heath ;
+                    :hasMother :Eileen_Mary_Rever ;
                     :birthYear 1960 ;
                     :familyName "Heath"^^xsd:string ;
                     :firstGivenName "Mark"^^xsd:string ;
@@ -353,6 +395,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Bright
 :Mark_Bright rdf:type owl:NamedIndividual ;
+             :hasFather :John_Bright ;
+             :hasMother :Joyce_Gosport ;
              :birthYear 1956 ;
              :familyName "Bright"^^xsd:string ;
              :firstGivenName "Mark"^^xsd:string .
@@ -360,6 +404,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nicholas_Charles_Heath
 :Nicholas_Charles_Heath rdf:type owl:NamedIndividual ;
+                        :hasFather :Dereck_Heath ;
+                        :hasMother :Eileen_Mary_Rever ;
                         :birthYear 1964 ;
                         :familyName "Heath"^^xsd:string ;
                         :firstGivenName "Nicholas"^^xsd:string ;
@@ -368,6 +414,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nora_Ada_Bright
 :Nora_Ada_Bright rdf:type owl:NamedIndividual ;
+                 :hasFather :Henry_Edmund_Bright ;
+                 :hasMother :Charlotte_Hewett ;
                  :birthYear 1899 ;
                  :familyName "Bright"^^xsd:string ;
                  :firstGivenName "Nora"^^xsd:string ;
@@ -376,6 +424,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Norman_James_Archer
 :Norman_James_Archer rdf:type owl:NamedIndividual ;
+                     :hasFather :James_Alexander_Archer ;
+                     :hasMother :Violet_Heath ;
                      :birthYear 1909 ;
                      :familyName "Archer"^^xsd:string ;
                      :firstGivenName "Norman"^^xsd:string ;
@@ -384,6 +434,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Peter_William_Bright
 :Peter_William_Bright rdf:type owl:NamedIndividual ;
+                      :hasFather :William_George_Bright ;
+                      :hasMother :Iris_Ellen_Archer ;
                       :birthYear 1941 ;
                       :familyName "Bright"^^xsd:string ;
                       :firstGivenName "Peter"^^xsd:string ;
@@ -392,6 +444,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Richard_John_Bright
 :Richard_John_Bright rdf:type owl:NamedIndividual ;
+                     :hasFather :David_Bright ;
+                     :hasMother :Margaret_Grace_Rever ;
                      :birthYear 1962 ;
                      :familyName "Bright"^^xsd:string ;
                      :firstGivenName "Richard"^^xsd:string ;
@@ -400,6 +454,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Robert_David_Bright
 :Robert_David_Bright rdf:type owl:NamedIndividual ;
+                     :hasFather :David_Bright ;
+                     :hasMother :Margaret_Grace_Rever ;
                      :birthYear 1965 ;
                      :familyName "Bright"^^xsd:string ;
                      :firstGivenName "Robert"^^xsd:string ;
@@ -415,6 +471,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Violet_Sylvia_Steward
 :Violet_Sylvia_Steward rdf:type owl:NamedIndividual ;
+                       :hasFather :John_Tacey_Steward ;
+                       :hasMother :Lois_Green ;
                        :birthYear 1894 ;
                        :familyName "Steward"^^xsd:string ;
                        :firstGivenName "Violet"^^xsd:string ;
@@ -423,6 +481,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Bright
 :William_Bright rdf:type owl:NamedIndividual ;
+                :hasFather :John_Bright ;
+                :hasMother :Joyce_Gosport ;
                 :birthYear 1970 ;
                 :familyName "Bright"^^xsd:string ;
                 :firstGivenName "William"^^xsd:string .
@@ -430,6 +490,8 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_George_Bright
 :William_George_Bright rdf:type owl:NamedIndividual ;
+                       :hasFather :Henry_Edmund_Bright ;
+                       :hasMother :Charlotte_Hewett ;
                        :birthYear 1901 ;
                        :familyName "Bright"^^xsd:string ;
                        :firstGivenName "William"^^xsd:string ;
