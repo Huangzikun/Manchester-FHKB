@@ -126,8 +126,8 @@
                                 :Person ;
                        :birthYear 1895 ;
                        :familyName "Rever"^^xsd:string ;
-                       :firstGivenName "Charles"^^xsd:string ,
-                                       "Herbert"^^xsd:string .
+                       :firstGivenName "Charles"^^xsd:string ;
+                       :secondGivenName "Herbert"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Caroline_Jane_Bright
@@ -135,8 +135,8 @@
                                          :Person ;
                                 :birthYear 1894 ;
                                 :familyName "Bright"^^xsd:string ;
-                                :firstGivenName "Caroline Jane"^^xsd:string ,
-                                                "Charlotte"^^xsd:string .
+                                :firstGivenName "Charlotte"^^xsd:string ;
+                                :secondGivenName "Caroline Jane"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Hewett
@@ -192,8 +192,8 @@
                                    :Person ;
                           :birthYear 1869 ;
                           :familyName "Jessop"^^xsd:string ;
-                          :firstGivenName "Elizabeth"^^xsd:string ,
-                                          "Frances"^^xsd:string .
+                          :firstGivenName "Elizabeth"^^xsd:string ;
+                          :secondGivenName "Frances"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ethel_Archer
@@ -237,6 +237,210 @@
             :birthYear 1959 ;
             :familyName "Bright"^^xsd:string ;
             :firstGivenName "Ian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Iris_Ellen_Archer
+:Iris_Ellen_Archer rdf:type owl:NamedIndividual ;
+                   :birthYear 1906 ;
+                   :familyName "Archer"^^xsd:string ;
+                   :firstGivenName "Iris"^^xsd:string ;
+                   :secondGivenName "Ellen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Alexander_Archer
+:James_Alexander_Archer rdf:type owl:NamedIndividual ;
+                        :birthYear 1882 ;
+                        :familyName "Archer"^^xsd:string ;
+                        :firstGivenName "James"^^xsd:string ;
+                        :secondGivenName "Alexander"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Bright
+:James_Bright rdf:type owl:NamedIndividual ;
+              :birthYear 1964 ;
+              :familyName "Bright"^^xsd:string ;
+              :firstGivenName "James"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Frank_Hayden_Bright
+:James_Frank_Hayden_Bright rdf:type owl:NamedIndividual ;
+                           :birthYear 1891 ;
+                           :familyName "Bright"^^xsd:string ;
+                           :firstGivenName "James"^^xsd:string ;
+                           :secondGivenName "Frank"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Janet_Bright
+:Janet_Bright rdf:type owl:NamedIndividual ;
+              :birthYear 1964 ;
+              :familyName "Bright"^^xsd:string ;
+              :firstGivenName "Janet"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#John_Bright
+:John_Bright rdf:type owl:NamedIndividual ;
+             :birthYear 1930 ;
+             :familyName "Bright"^^xsd:string ;
+             :firstGivenName "John"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#John_Tacey_Steward
+:John_Tacey_Steward rdf:type owl:NamedIndividual ;
+                    :birthYear 1873 ;
+                    :familyName "Steward"^^xsd:string ;
+                    :firstGivenName "John"^^xsd:string ;
+                    :secondGivenName "Tacey"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Joyce_Archer
+:Joyce_Archer rdf:type owl:NamedIndividual ;
+              :birthYear 1921 ;
+              :familyName "Archer"^^xsd:string ;
+              :firstGivenName "Joyce"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Joyce_Gosport
+:Joyce_Gosport rdf:type owl:NamedIndividual ;
+               :familyName "Gosport"^^xsd:string ;
+               :firstGivenName "Joyce"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Julie_Bright
+:Julie_Bright rdf:type owl:NamedIndividual ;
+              :birthYear 1966 ;
+              :familyName "Bright"^^xsd:string ;
+              :firstGivenName "Julie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Kathleen_Minnie_Bright
+:Kathleen_Minnie_Bright rdf:type owl:NamedIndividual ;
+                        :birthYear 1904 ;
+                        :familyName "Bright"^^xsd:string ;
+                        :firstGivenName "Kathleen"^^xsd:string ;
+                        :secondGivenName "Minnie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Leonard_John_Bright
+:Leonard_John_Bright rdf:type owl:NamedIndividual ;
+                     :birthYear 1890 ;
+                     :familyName "Bright"^^xsd:string ;
+                     :firstGivenName "Leonard"^^xsd:string ;
+                     :secondGivenName "John"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Lois_Green
+:Lois_Green rdf:type owl:NamedIndividual ;
+            :birthYear 1871 ;
+            :familyName "Green"^^xsd:string ;
+            :firstGivenName "Lois"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Margaret_Grace_Rever
+:Margaret_Grace_Rever rdf:type owl:NamedIndividual ;
+                      :birthYear 1934 ;
+                      :familyName "Rever"^^xsd:string ;
+                      :firstGivenName "Margaret"^^xsd:string ;
+                      :secondGivenName "Grace"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Anthony_Heath
+:Mark_Anthony_Heath rdf:type owl:NamedIndividual ;
+                    :birthYear 1960 ;
+                    :familyName "Heath"^^xsd:string ;
+                    :firstGivenName "Mark"^^xsd:string ;
+                    :secondGivenName "Anthony"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Bright
+:Mark_Bright rdf:type owl:NamedIndividual ;
+             :birthYear 1956 ;
+             :familyName "Bright"^^xsd:string ;
+             :firstGivenName "Mark"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nicholas_Charles_Heath
+:Nicholas_Charles_Heath rdf:type owl:NamedIndividual ;
+                        :birthYear 1964 ;
+                        :familyName "Heath"^^xsd:string ;
+                        :firstGivenName "Nicholas"^^xsd:string ;
+                        :secondGivenName "Charles"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nora_Ada_Bright
+:Nora_Ada_Bright rdf:type owl:NamedIndividual ;
+                 :birthYear 1899 ;
+                 :familyName "Bright"^^xsd:string ;
+                 :firstGivenName "Nora"^^xsd:string ;
+                 :secondGivenName "Ada"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Norman_James_Archer
+:Norman_James_Archer rdf:type owl:NamedIndividual ;
+                     :birthYear 1909 ;
+                     :familyName "Archer"^^xsd:string ;
+                     :firstGivenName "Norman"^^xsd:string ;
+                     :secondGivenName "James"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Peter_William_Bright
+:Peter_William_Bright rdf:type owl:NamedIndividual ;
+                      :birthYear 1941 ;
+                      :familyName "Bright"^^xsd:string ;
+                      :firstGivenName "Peter"^^xsd:string ;
+                      :secondGivenName "William"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Richard_John_Bright
+:Richard_John_Bright rdf:type owl:NamedIndividual ;
+                     :birthYear 1962 ;
+                     :familyName "Bright"^^xsd:string ;
+                     :firstGivenName "Richard"^^xsd:string ;
+                     :secondGivenName "John"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Robert_David_Bright
+:Robert_David_Bright rdf:type owl:NamedIndividual ;
+                     :birthYear 1965 ;
+                     :familyName "Bright"^^xsd:string ;
+                     :firstGivenName "Robert"^^xsd:string ;
+                     :secondGivenName "David"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Violet_Heath
+:Violet_Heath rdf:type owl:NamedIndividual ;
+              :birthYear 1887 ;
+              :familyName "Heath"^^xsd:string ;
+              :firstGivenName "Violet"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Violet_Sylvia_Steward
+:Violet_Sylvia_Steward rdf:type owl:NamedIndividual ;
+                       :birthYear 1894 ;
+                       :familyName "Steward"^^xsd:string ;
+                       :firstGivenName "Violet"^^xsd:string ;
+                       :secondGivenName "Sylvia"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Bright
+:William_Bright rdf:type owl:NamedIndividual ;
+                :birthYear 1970 ;
+                :familyName "Bright"^^xsd:string ;
+                :firstGivenName "William"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_George_Bright
+:William_George_Bright rdf:type owl:NamedIndividual ;
+                       :birthYear 1901 ;
+                       :familyName "Bright"^^xsd:string ;
+                       :firstGivenName "William"^^xsd:string ;
+                       :secondGivenName "George"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Rever
+:William_Rever rdf:type owl:NamedIndividual ;
+               :birthYear 1870 ;
+               :firstGivenName "William"^^xsd:string ;
+               :secondGivenName "Rever"^^xsd:string .
 
 
 #################################################################
