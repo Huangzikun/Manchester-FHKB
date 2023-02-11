@@ -12,10 +12,48 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAncestor
+:hasAncestor rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasRelation ;
+             owl:inverseOf :isAncestorOf ;
+             rdf:type owl:TransitiveProperty ;
+             owl:propertyChainAxiom ( :hasParent
+                                    ) .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFather
 :hasFather rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasParent ;
            owl:inverseOf :isFatherOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandParent
+:hasGrandParent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasAncestor ;
+                owl:inverseOf :isGrandParentOf ;
+                owl:propertyChainAxiom ( :hasGrandfather
+                                       ) ,
+                                       ( :hasGrandmother
+                                       ) ,
+                                       ( :hasParent
+                                         :hasParent
+                                       ) .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandfather
+:hasGrandfather rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasGrandParent ;
+                owl:propertyChainAxiom ( :hasParent
+                                         :hasFather
+                                       ) .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandmother
+:hasGrandmother rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasGrandParent ;
+                owl:propertyChainAxiom ( :hasParent
+                                         :hasMother
+                                       ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasMother
@@ -26,13 +64,28 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasParent
 :hasParent rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:subPropertyOf :hasAncestor ;
            owl:inverseOf :isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasRelation
+:hasRelation rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
+:isAncestorOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasRelation .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isFatherOf
 :isFatherOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandParentOf
+:isGrandParentOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasAncestor .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherOf
@@ -42,7 +95,7 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isParentOf
 :isParentOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty .
+            rdfs:subPropertyOf :hasRelation .
 
 
 #################################################################
