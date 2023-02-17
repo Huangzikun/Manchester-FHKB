@@ -518,11 +518,6 @@ fhkb:Henry_Edmund_Bright_1887 rdf:type owl:NamedIndividual ,
                               fhkb:secondGivenName "Edmund"^^xsd:string .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Huang_Zikun
-fhkb:Huang_Zikun rdf:type owl:NamedIndividual ,
-                          fhkb:Person .
-
-
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ian_Bright
 fhkb:Ian_Bright rdf:type owl:NamedIndividual ,
                          fhkb:Person ;
