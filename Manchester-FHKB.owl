@@ -140,14 +140,92 @@ fhkb:secondGivenName rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ancestor
+fhkb:Ancestor rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty fhkb:isAncestorOf ;
+                                                           owl:someValuesFrom fhkb:Person
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf fhkb:Person .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Descendant
+fhkb:Descendant rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty fhkb:hasAncestor ;
+                                                             owl:someValuesFrom fhkb:Person
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf fhkb:Person .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#DomainEntity
 fhkb:DomainEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#FemaleAncestor
+fhkb:FemaleAncestor rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( fhkb:Woman
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty fhkb:isAncestorOf ;
+                                                                 owl:someValuesFrom fhkb:Person
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf fhkb:Ancestor .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#FemaleDescendant
+fhkb:FemaleDescendant rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( fhkb:Woman
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty fhkb:hasAncestor ;
+                                                                   owl:someValuesFrom fhkb:Person
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf fhkb:Descendant .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Femaleness
 fhkb:Femaleness rdf:type owl:Class ;
                 rdfs:subClassOf fhkb:Sex ;
                 owl:disjointWith fhkb:Maleness .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#MaleAncestor
+fhkb:MaleAncestor rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( fhkb:Man
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty fhkb:isAncestorOf ;
+                                                               owl:someValuesFrom fhkb:Person
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf fhkb:Ancestor .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#MaleDescendant
+fhkb:MaleDescendant rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( fhkb:Man
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty fhkb:hasAncestor ;
+                                                                 owl:someValuesFrom fhkb:Person
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf fhkb:Descendant .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Maleness
@@ -174,7 +252,19 @@ fhkb:Person rdf:type owl:Class ;
                                   owl:onProperty fhkb:hasSex ;
                                   owl:someValuesFrom fhkb:Sex
                                 ] ;
-            rdfs:subClassOf fhkb:DomainEntity ;
+            rdfs:subClassOf fhkb:DomainEntity ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fhkb:hasFather ;
+                              owl:someValuesFrom fhkb:Man
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fhkb:hasMother ;
+                              owl:someValuesFrom fhkb:Woman
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fhkb:hasSex ;
+                              owl:someValuesFrom fhkb:Sex
+                            ] ;
             owl:disjointWith fhkb:Sex .
 
 
