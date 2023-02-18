@@ -22,6 +22,17 @@ fhkb:hasAncestor rdf:type owl:ObjectProperty ;
                                         ) .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAunt
+fhkb:hasAunt rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf fhkb:hasBloodrelation ;
+             owl:inverseOf fhkb:isAuntOf ;
+             rdfs:domain fhkb:Woman ;
+             rdfs:range fhkb:Person ;
+             owl:propertyChainAxiom ( fhkb:hasParent
+                                      fhkb:hasSister
+                                    ) .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBloodrelation
 fhkb:hasBloodrelation rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf fhkb:hasRelation ;
@@ -35,7 +46,10 @@ fhkb:hasBrother rdf:type owl:ObjectProperty ;
                 owl:inverseOf fhkb:isBrotherOf ;
                 rdf:type owl:TransitiveProperty ;
                 rdfs:domain fhkb:Person ;
-                rdfs:range fhkb:Man .
+                rdfs:range fhkb:Man ;
+                owl:propertyChainAxiom ( fhkb:hasParent
+                                         fhkb:hasSon
+                                       ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasChild
@@ -134,7 +148,10 @@ fhkb:hasSister rdf:type owl:ObjectProperty ;
                owl:inverseOf fhkb:isSisterOf ;
                rdf:type owl:TransitiveProperty ;
                rdfs:domain fhkb:Person ;
-               rdfs:range fhkb:Woman .
+               rdfs:range fhkb:Woman ;
+               owl:propertyChainAxiom ( fhkb:hasParent
+                                        fhkb:hasDaughter
+                                      ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSon
@@ -145,9 +162,25 @@ fhkb:hasSon rdf:type owl:ObjectProperty ;
             rdfs:range fhkb:Man .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasUncle
+fhkb:hasUncle rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fhkb:hasBloodrelation ;
+              owl:inverseOf fhkb:isUncleOf ;
+              rdfs:domain fhkb:Man ;
+              rdfs:range fhkb:Person ;
+              owl:propertyChainAxiom ( fhkb:hasParent
+                                       fhkb:hasBrother
+                                     ) .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
 fhkb:isAncestorOf rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf fhkb:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAuntOf
+fhkb:isAuntOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fhkb:hasBloodrelation .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isBrotherOf
@@ -193,6 +226,11 @@ fhkb:isSisterOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSonOf
 fhkb:isSonOf rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf fhkb:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isUncleOf
+fhkb:isUncleOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fhkb:hasBloodrelation .
 
 
 #################################################################
@@ -429,8 +467,7 @@ fhkb:David_Bright rdf:type owl:NamedIndividual ,
                            fhkb:Person ;
                   fhkb:hasFather fhkb:William_George_Bright ;
                   fhkb:hasMother fhkb:Iris_Ellen_Archer ;
-                  fhkb:isBrotherOf fhkb:John_Bright ,
-                                   fhkb:Peter_William_Bright ;
+                  fhkb:isSonOf fhkb:William_George_Bright ;
                   fhkb:birthYear 1934 ;
                   fhkb:familyName "Bright"^^xsd:string ;
                   fhkb:firstGivenName "David"^^xsd:string .
@@ -570,9 +607,7 @@ fhkb:Janet_Bright rdf:type owl:NamedIndividual ,
                            fhkb:Person ;
                   fhkb:hasFather fhkb:John_Bright ;
                   fhkb:hasMother fhkb:Joyce_Gosport ;
-                  fhkb:isSisterOf fhkb:Ian_Bright ,
-                                  fhkb:Mark_Bright ,
-                                  fhkb:William_Bright ;
+                  fhkb:isDaughterOf fhkb:John_Bright ;
                   fhkb:birthYear 1964 ;
                   fhkb:familyName "Bright"^^xsd:string ;
                   fhkb:firstGivenName "Janet"^^xsd:string .
@@ -681,9 +716,6 @@ fhkb:Mark_Bright rdf:type owl:NamedIndividual ,
                           fhkb:Person ;
                  fhkb:hasFather fhkb:John_Bright ;
                  fhkb:hasMother fhkb:Joyce_Gosport ;
-                 fhkb:isBrotherOf fhkb:Ian_Bright ,
-                                  fhkb:Janet_Bright ,
-                                  fhkb:William_Bright ;
                  fhkb:isSonOf fhkb:John_Bright ;
                  fhkb:birthYear 1956 ;
                  fhkb:familyName "Bright"^^xsd:string ;
@@ -751,7 +783,6 @@ fhkb:Robert_David_Bright rdf:type owl:NamedIndividual ,
                                   fhkb:Person ;
                          fhkb:hasFather fhkb:David_Bright ;
                          fhkb:hasMother fhkb:Margaret_Grace_Rever ;
-                         fhkb:isBrotherOf fhkb:Richard_John_Bright ;
                          fhkb:isSonOf fhkb:David_Bright ;
                          fhkb:birthYear 1965 ;
                          fhkb:familyName "Bright"^^xsd:string ;
