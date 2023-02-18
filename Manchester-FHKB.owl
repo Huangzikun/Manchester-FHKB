@@ -15,11 +15,18 @@
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAncestor
 fhkb:hasAncestor rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf fhkb:hasRelation ;
+                 rdfs:subPropertyOf fhkb:hasBloodrelation ;
                  owl:inverseOf fhkb:isAncestorOf ;
                  rdf:type owl:TransitiveProperty ;
                  owl:propertyChainAxiom ( fhkb:hasParent
                                         ) .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBloodrelation
+fhkb:hasBloodrelation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf fhkb:hasRelation ;
+                      rdfs:domain fhkb:Person ;
+                      rdfs:range fhkb:Person .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFather
@@ -85,6 +92,16 @@ fhkb:hasSex rdf:type owl:ObjectProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain fhkb:Person ;
             rdfs:range fhkb:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSibling
+fhkb:hasSibling rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fhkb:hasBloodrelation ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:TransitiveProperty ;
+                owl:propertyChainAxiom ( fhkb:hasParent
+                                         fhkb:isParentOf
+                                       ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
