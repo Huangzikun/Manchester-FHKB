@@ -25,6 +25,7 @@ fhkb:hasAncestor rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAunt
 fhkb:hasAunt rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf fhkb:hasBloodrelation ;
+             owl:inverseOf fhkb:isAuntOf ;
              rdfs:range fhkb:Woman ;
              owl:propertyChainAxiom ( fhkb:hasParent
                                       fhkb:hasParent
@@ -206,7 +207,6 @@ fhkb:isFatherOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandParentOf
 fhkb:isGrandParentOf rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf fhkb:hasAncestor .
-                     rdfs:subPropertyOf fhkb:isAncestorOf .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherOf
@@ -489,15 +489,6 @@ fhkb:Diana_Pool rdf:type owl:NamedIndividual ,
                 fhkb:firstGivenName "Diana"^^xsd:string .
 
 
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Dorothy_Walker_Bush
-fhkb:Dorothy_Walker_Bush rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:familyName "Bush"^^xsd:string ;
-                         fhkb:firstGivenName "Dorothy"^^xsd:string ;
-                         fhkb:secondGivenName "Walker"^^xsd:string .
-
-
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Eileen_Mary_Rever
 fhkb:Eileen_Mary_Rever rdf:type owl:NamedIndividual ,
                                 fhkb:Person ;
@@ -538,34 +529,6 @@ fhkb:Frederick_Herbert_Bright rdf:type owl:NamedIndividual ,
                               fhkb:firstGivenName "Frederick"^^xsd:string ;
                               fhkb:secondGivenName "Herbert"^^xsd:string .
 
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#George_Herbert_Walker_Bush
-fhkb:George_Herbert_Walker_Bush rdf:type owl:NamedIndividual ,
-                                         fhkb:Person ;
-                                fhkb:hasFather fhkb:Prescott_Bush ;
-                                fhkb:hasMother fhkb:Dorothy_Walker_Bush ;
-                                fhkb:birthYear 1924 ;
-                                fhkb:familyName "Bush"^^xsd:string ;
-                                fhkb:firstGivenName "George"^^xsd:string ;
-                                fhkb:secondGivenName "Herbert Walker"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#George_Walker_Bush
-fhkb:George_Walker_Bush rdf:type owl:NamedIndividual ,
-                                 fhkb:Person ;
-                        fhkb:hasFather fhkb:George_Herbert_Walker_Bush ;
-                        fhkb:hasMother fhkb:Barbara_Pierce_Bush ;
-                        fhkb:birthYear 1946 ;
-                        fhkb:familyName "Bush"^^xsd:string ;
-                        fhkb:firstGivenName "George"^^xsd:string ;
-                        fhkb:secondGivenName "Walker"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Harold_Welch
-fhkb:Harold_Welch rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:familyName "Welch"^^xsd:string ;
-                  fhkb:firstGivenName "Harold"^^xsd:string .
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Henry_Edmund_Bright
 fhkb:Henry_Edmund_Bright rdf:type owl:NamedIndividual ,
@@ -708,18 +671,6 @@ fhkb:Kathleen_Minnie_Bright rdf:type owl:NamedIndividual ,
                             fhkb:secondGivenName "Minnie"^^xsd:string .
 
 
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Laura_Welch_Bush
-fhkb:Laura_Welch_Bush rdf:type owl:NamedIndividual ,
-                               fhkb:Person ;
-                      fhkb:hasFather fhkb:Harold_Welch ;
-                      fhkb:hasMother fhkb:Jenna_Louise_Hawkins_Welch ;
-                      fhkb:birthYear 1946 ;
-                      fhkb:familyName "Bush"^^xsd:string ;
-                      fhkb:firstGivenName "Laura"^^xsd:string ;
-                      fhkb:secondGivenName "Welch"^^xsd:string .
-
-
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Leonard_John_Bright
 fhkb:Leonard_John_Bright rdf:type owl:NamedIndividual ,
                                   fhkb:Person ;
@@ -771,26 +722,6 @@ fhkb:Mark_Bright rdf:type owl:NamedIndividual ,
                  fhkb:familyName "Bright"^^xsd:string ;
                  fhkb:firstGivenName "Mark"^^xsd:string .
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nancy_Walker_Bush
-fhkb:Nancy_Walker_Bush rdf:type owl:NamedIndividual ,
-                                fhkb:Person ;
-                       fhkb:hasFather fhkb:Prescott_Bush ;
-                       fhkb:hasMother fhkb:Dorothy_Walker_Bush ;
-                       fhkb:birthYear 1926 ;
-                       fhkb:familyName "Bush"^^xsd:string ;
-                       fhkb:firstGivenName "Nancy"^^xsd:string ;
-                       fhkb:secondGivenName "Walker"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Neilsie_Bush
-fhkb:Neilsie_Bush rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:George_Herbert_Walker_Bush ;
-                  fhkb:hasMother fhkb:Barbara_Pierce_Bush ;
-                  fhkb:birthYear 1954 ;
-                  fhkb:familyName "Bush"^^xsd:string ;
-                  fhkb:firstGivenName "Neilsie"^^xsd:string .
-
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nicholas_Charles_Heath
 fhkb:Nicholas_Charles_Heath rdf:type owl:NamedIndividual ,
@@ -834,14 +765,6 @@ fhkb:Peter_William_Bright rdf:type owl:NamedIndividual ,
                           fhkb:familyName "Bright"^^xsd:string ;
                           fhkb:firstGivenName "Peter"^^xsd:string ;
                           fhkb:secondGivenName "William"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Prescott_Bush
-fhkb:Prescott_Bush rdf:type owl:NamedIndividual ,
-                            fhkb:Person ;
-                   fhkb:birthYear 1895 ;
-                   fhkb:familyName "Bush"^^xsd:string ;
-                   fhkb:firstGivenName "Prescott"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Richard_John_Bright
@@ -907,17 +830,6 @@ fhkb:William_George_Bright rdf:type owl:NamedIndividual ,
                            fhkb:familyName "Bright"^^xsd:string ;
                            fhkb:firstGivenName "William"^^xsd:string ;
                            fhkb:secondGivenName "George"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Henry_Trotter_Bush
-fhkb:William_Henry_Trotter_Bush rdf:type owl:NamedIndividual ,
-                                         fhkb:Person ;
-                                fhkb:hasFather fhkb:Prescott_Bush ;
-                                fhkb:hasMother fhkb:Dorothy_Walker_Bush ;
-                                fhkb:birthYear 1938 ;
-                                fhkb:familyName "Bush"^^xsd:string ;
-                                fhkb:firstGivenName "William"^^xsd:string ;
-                                fhkb:secondGivenName "Henry Trotter"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Rever
