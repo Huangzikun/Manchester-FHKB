@@ -26,18 +26,19 @@ fhkb:hasAncestor rdf:type owl:ObjectProperty ;
 fhkb:hasAunt rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf fhkb:hasBloodrelation ;
              owl:inverseOf fhkb:isAuntOf ;
-             rdfs:domain fhkb:Woman ;
-             rdfs:range fhkb:Person ;
+             rdfs:range fhkb:Woman ;
              owl:propertyChainAxiom ( fhkb:hasParent
+                                      fhkb:hasParent
+                                      fhkb:hasDaughter
+                                    ) ,
+                                    ( fhkb:hasParent
                                       fhkb:hasSister
                                     ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBloodrelation
 fhkb:hasBloodrelation rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf fhkb:hasRelation ;
-                      rdfs:domain fhkb:Person ;
-                      rdfs:range fhkb:Person .
+                      rdfs:subPropertyOf fhkb:hasRelation .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBrother
@@ -171,10 +172,7 @@ fhkb:hasSex rdf:type owl:ObjectProperty ,
 fhkb:hasSibling rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf fhkb:hasBloodrelation ;
                 rdf:type owl:SymmetricProperty ,
-                         owl:TransitiveProperty ;
-                owl:propertyChainAxiom ( fhkb:hasParent
-                                         fhkb:isParentOf
-                                       ) .
+                         owl:TransitiveProperty .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSister
@@ -207,10 +205,13 @@ fhkb:hasSpouse rdf:type owl:ObjectProperty ;
 fhkb:hasUncle rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf fhkb:hasBloodrelation ;
               owl:inverseOf fhkb:isUncleOf ;
-              rdfs:domain fhkb:Man ;
-              rdfs:range fhkb:Person ;
+              rdfs:range fhkb:Man ;
               owl:propertyChainAxiom ( fhkb:hasParent
                                        fhkb:hasBrother
+                                     ) ,
+                                     ( fhkb:hasParent
+                                       fhkb:hasParent
+                                       fhkb:hasSon
                                      ) .
 
 
