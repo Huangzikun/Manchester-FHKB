@@ -62,7 +62,12 @@ fhkb:hasChild rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasCousin
 fhkb:hasCousin rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fhkb:hasRelation ;
-               owl:inverseOf fhkb:isCousinOf .
+               owl:inverseOf fhkb:isCousinOf ;
+               rdf:type owl:SymmetricProperty ;
+               owl:propertyChainAxiom ( fhkb:hasParent
+                                        fhkb:hasSibling
+                                        fhkb:hasChild
+                                      ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasDaughter
@@ -75,7 +80,12 @@ fhkb:hasDaughter rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasDaughterInLaw
 fhkb:hasDaughterInLaw rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf fhkb:hasInLaw .
+                      rdfs:subPropertyOf fhkb:hasInLaw ;
+                      owl:inverseOf fhkb:isDaughterInLawOf ;
+                      rdfs:domain fhkb:Person ;
+                      owl:propertyChainAxiom ( fhkb:isSpouseOf
+                                               fhkb:hasChild
+                                             ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFather
@@ -88,7 +98,13 @@ fhkb:hasFather rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFatherInLaw
 fhkb:hasFatherInLaw rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasParentInLaw .
+                    rdfs:subPropertyOf fhkb:hasParentInLaw ;
+                    owl:inverseOf fhkb:isFatherInLawOf ;
+                    rdfs:domain fhkb:Person ;
+                    rdfs:range fhkb:Man ;
+                    owl:propertyChainAxiom ( fhkb:isSpouseOf
+                                             fhkb:hasFather
+                                           ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGender
@@ -124,6 +140,16 @@ fhkb:hasGrandmother rdf:type owl:ObjectProperty ;
                                            ) .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandparent
+fhkb:hasGrandparent rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fhkb:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasHusband
+fhkb:hasHusband rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fhkb:hasSpouse .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasInLaw
 fhkb:hasInLaw rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf fhkb:hasRelation .
@@ -139,7 +165,13 @@ fhkb:hasMother rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasMotherInLaw
 fhkb:hasMotherInLaw rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasParentInLaw .
+                    rdfs:subPropertyOf fhkb:hasParentInLaw ;
+                    owl:inverseOf fhkb:isMotherInLawOf ;
+                    rdfs:domain fhkb:Person ;
+                    rdfs:range fhkb:Woman ;
+                    owl:propertyChainAxiom ( fhkb:isSpouseOf
+                                             fhkb:hasMother
+                                           ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasParent
@@ -153,7 +185,13 @@ fhkb:hasParent rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasParentInLaw
 fhkb:hasParentInLaw rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasInLaw .
+                    rdfs:subPropertyOf fhkb:hasInLaw ;
+                    owl:inverseOf fhkb:isParentInLawOf ;
+                    rdfs:domain fhkb:Person ;
+                    rdfs:range fhkb:Person ;
+                    owl:propertyChainAxiom ( fhkb:isSpouseOf
+                                             fhkb:hasParent
+                                           ) .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasRelation
@@ -215,6 +253,11 @@ fhkb:hasUncle rdf:type owl:ObjectProperty ;
                                      ) .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasWife
+fhkb:hasWife rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf fhkb:hasSpouse .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
 fhkb:isAncestorOf rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf fhkb:hasRelation .
@@ -240,9 +283,19 @@ fhkb:isCousinOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf fhkb:hasRelation .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isDaughterInLawOf
+fhkb:isDaughterInLawOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf fhkb:isInLawOf .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isDaughterOf
 fhkb:isDaughterOf rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf fhkb:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isFatherInLawOf
+fhkb:isFatherInLawOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf fhkb:isParentInLawOf .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isFatherOf
@@ -255,9 +308,34 @@ fhkb:isGrandParentOf rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf fhkb:hasAncestor .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandparentOf
+fhkb:isGrandparentOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf fhkb:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isHusbandOf
+fhkb:isHusbandOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fhkb:isSpouseOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isInLawOf
+fhkb:isInLawOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fhkb:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherInLawOf
+fhkb:isMotherInLawOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf fhkb:isParentInLawOf .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherOf
 fhkb:isMotherOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf fhkb:isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isParentInLawOf
+fhkb:isParentInLawOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf fhkb:isInLawOf .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isParentOf
@@ -283,6 +361,11 @@ fhkb:isSpouseOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isUncleOf
 fhkb:isUncleOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fhkb:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isWifeOf
+fhkb:isWifeOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fhkb:isSpouseOf .
 
 
 #################################################################
@@ -353,9 +436,35 @@ fhkb:Aunt rdf:type owl:Class ;
           rdfs:subClassOf fhkb:Person .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Child
+fhkb:Child rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fhkb:hasParent ;
+                                                        owl:someValuesFrom fhkb:Person
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf fhkb:Person .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Cousin
 fhkb:Cousin rdf:type owl:Class ;
             rdfs:subClassOf fhkb:Person .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Daughter
+fhkb:Daughter rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty fhkb:hasParent ;
+                                                           owl:someValuesFrom fhkb:Person
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf fhkb:Child .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#DaughterInlaw
@@ -420,6 +529,19 @@ fhkb:Femaleness rdf:type owl:Class ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Gender
 fhkb:Gender rdf:type owl:Class ;
             rdfs:subClassOf fhkb:DomainEntity .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Grandparent
+fhkb:Grandparent rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty fhkb:isGrandparentOf ;
+                                                              owl:someValuesFrom fhkb:Person
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf fhkb:Person .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Inlaw
@@ -508,6 +630,19 @@ fhkb:Sex rdf:type owl:Class ;
          rdfs:subClassOf fhkb:DomainEntity .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Son
+fhkb:Son rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty fhkb:hasParent ;
+                                                      owl:someValuesFrom fhkb:Person
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf fhkb:Child .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Spouse
 fhkb:Spouse rdf:type owl:Class ;
             rdfs:subClassOf fhkb:Person .
@@ -536,27 +671,40 @@ fhkb:Woman rdf:type owl:Class ;
 #################################################################
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#BianShi
-fhkb:BianShi rdf:type owl:NamedIndividual ;
-             fhkb:hasSpouse fhkb:CaoCao .
+fhkb:BianShi rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasSpouse fhkb:CaoCao ;
+             fhkb:birthYear 159 .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoAng
+fhkb:CaoAng rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:CaoCao ;
+            fhkb:hasMother fhkb:LiuShi .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoCao
 fhkb:CaoCao rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:BianShi .
+            fhkb:hasSpouse fhkb:BianShi ,
+                           fhkb:LiuShi ;
+            fhkb:birthYear 155 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoChong
 fhkb:CaoChong rdf:type owl:NamedIndividual ,
                        fhkb:Person ;
               fhkb:hasFather fhkb:CaoCao ;
-              fhkb:hasMother fhkb:HuanShi .
+              fhkb:hasMother fhkb:HuanShi ;
+              fhkb:birthYear 196 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoFang
 fhkb:CaoFang rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
-             fhkb:hasFather fhkb:CaoRui .
+             fhkb:hasFather fhkb:CaoRui ;
+             fhkb:birthYear 232 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoGuiRen
@@ -576,13 +724,15 @@ fhkb:CaoPi rdf:type owl:NamedIndividual ,
                     fhkb:Person ;
            fhkb:hasFather fhkb:CaoCao ;
            fhkb:hasMother fhkb:BianShi ;
-           fhkb:hasSpouse fhkb:ZhenJi .
+           fhkb:hasSpouse fhkb:ZhenJi ;
+           fhkb:birthYear 187 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoRen
 fhkb:CaoRen rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasFather fhkb:CaoSong .
+            fhkb:hasFather fhkb:CaoSong ;
+            fhkb:birthYear 168 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoRui
@@ -590,7 +740,8 @@ fhkb:CaoRui rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
             fhkb:hasFather fhkb:CaoPi ;
             fhkb:hasMother fhkb:ZhenJi ;
-            fhkb:hasSpouse fhkb:MaoShi .
+            fhkb:hasSpouse fhkb:MaoShi ;
+            fhkb:birthYear 204 .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoSong
@@ -619,7 +770,7 @@ fhkb:HuanShi rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#LiuShi
 fhkb:LiuShi rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:CaoSong .
+            fhkb:hasSpouse fhkb:CaoCao .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Male
@@ -636,7 +787,8 @@ fhkb:MaoShi rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#ZhenJi
 fhkb:ZhenJi rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:CaoPi .
+            fhkb:hasSpouse fhkb:CaoPi ;
+            fhkb:birthYear 183 .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
