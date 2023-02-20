@@ -271,6 +271,14 @@ fhkb:hasUncle rdf:type owl:ObjectProperty ;
                                      ) .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasVassal
+fhkb:hasVassal rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fhkb:hasRelation ;
+               owl:inverseOf fhkb:isVassalOf ;
+               rdfs:domain fhkb:Person ;
+               rdfs:range fhkb:Person .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasWife
 fhkb:hasWife rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf fhkb:hasSpouse .
@@ -384,6 +392,13 @@ fhkb:isSpouseOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isUncleOf
 fhkb:isUncleOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fhkb:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isVassalOf
+fhkb:isVassalOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fhkb:hasRelation ;
+                rdfs:domain fhkb:Person ;
+                rdfs:range fhkb:Person .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isWifeOf
@@ -697,22 +712,49 @@ fhkb:Woman rdf:type owl:Class ;
 fhkb:BianShi rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
              fhkb:hasSpouse fhkb:CaoCao ;
-             fhkb:birthYear 159 .
+             fhkb:birthYear 159 ;
+             fhkb:familyName "Bian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaiMao
+fhkb:CaiMao rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasSister fhkb:CaiShi ;
+            fhkb:familyName "Cai"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaiShi
+fhkb:CaiShi rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasBrother fhkb:CaiMao ;
+            fhkb:hasSpouse fhkb:LiuBiao ;
+            fhkb:familyName "CaI"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoAng
 fhkb:CaoAng rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
             fhkb:hasFather fhkb:CaoCao ;
-            fhkb:hasMother fhkb:LiuShi .
+            fhkb:hasMother fhkb:LiuShi ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoCao
 fhkb:CaoCao rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
+            fhkb:hasBloodrelation fhkb:XiahouDun ,
+                                  fhkb:XiahouYuan ;
+            fhkb:hasFather fhkb:CaoSong ;
             fhkb:hasSpouse fhkb:BianShi ,
                            fhkb:LiuShi ;
-            fhkb:birthYear 155 .
+            fhkb:hasVassal fhkb:CaoHong ,
+                           fhkb:CaoRen ,
+                           fhkb:CaoZhen ,
+                           fhkb:SimaYi ,
+                           fhkb:XiahouDun ,
+                           fhkb:XiahouYuan ;
+            fhkb:birthYear 155 ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoChong
@@ -720,26 +762,39 @@ fhkb:CaoChong rdf:type owl:NamedIndividual ,
                        fhkb:Person ;
               fhkb:hasFather fhkb:CaoCao ;
               fhkb:hasMother fhkb:HuanShi ;
-              fhkb:birthYear 196 .
+              fhkb:birthYear 196 ;
+              fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoFang
 fhkb:CaoFang rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
              fhkb:hasFather fhkb:CaoRui ;
-             fhkb:birthYear 232 .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoGuiRen
-fhkb:CaoGuiRen rdf:type owl:NamedIndividual ,
-                        fhkb:Person ;
-               fhkb:hasFather fhkb:CaoCao .
+             fhkb:birthYear 232 ;
+             fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoHong
 fhkb:CaoHong rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
-             fhkb:hasFather fhkb:CaoSong .
+             fhkb:hasCousin fhkb:CaoCao ;
+             fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoHua
+fhkb:CaoHua rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:CaoCao ;
+            fhkb:hasHusband fhkb:LiuXie ;
+            fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoJie
+fhkb:CaoJie rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:CaoCao ;
+            fhkb:hasHusband fhkb:LiuXie ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoPi
@@ -748,14 +803,16 @@ fhkb:CaoPi rdf:type owl:NamedIndividual ,
            fhkb:hasFather fhkb:CaoCao ;
            fhkb:hasMother fhkb:BianShi ;
            fhkb:hasSpouse fhkb:ZhenJi ;
-           fhkb:birthYear 187 .
+           fhkb:birthYear 187 ;
+           fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoRen
 fhkb:CaoRen rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasFather fhkb:CaoSong ;
-            fhkb:birthYear 168 .
+            fhkb:hasCousin fhkb:CaoCao ;
+            fhkb:birthYear 168 ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoRui
@@ -764,19 +821,37 @@ fhkb:CaoRui rdf:type owl:NamedIndividual ,
             fhkb:hasFather fhkb:CaoPi ;
             fhkb:hasMother fhkb:ZhenJi ;
             fhkb:hasSpouse fhkb:MaoShi ;
-            fhkb:birthYear 204 .
+            fhkb:birthYear 206 ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoSong
 fhkb:CaoSong rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
-             fhkb:hasSpouse fhkb:LiuShi .
+             fhkb:hasSpouse fhkb:ZouShi ;
+             fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoXian
+fhkb:CaoXian rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasFather fhkb:CaoCao ;
+             fhkb:hasHusband fhkb:LiuXie ;
+             fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoZhen
+fhkb:CaoZhen rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasFather fhkb:CaoCao ;
+             fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#DingShi
 fhkb:DingShi rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
-             fhkb:hasSpouse fhkb:CaoCao .
+             fhkb:hasSpouse fhkb:CaoCao ;
+             fhkb:familyName "Ding"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Female
@@ -787,13 +862,58 @@ fhkb:Female rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#HuanShi
 fhkb:HuanShi rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
-             fhkb:hasSpouse fhkb:CaoCao .
+             fhkb:hasSpouse fhkb:CaoCao ;
+             fhkb:familyName "Huan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#HuangZu
+fhkb:HuangZu rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:familyName "Huang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#KongRong
+fhkb:KongRong rdf:type owl:NamedIndividual ,
+                       fhkb:Person ;
+              fhkb:birthYear 153 ;
+              fhkb:familyName "Kong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#LiuBiao
+fhkb:LiuBiao rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasSpouse fhkb:CaiShi ;
+             fhkb:hasVassal fhkb:HuangZu ,
+                            fhkb:WenPin ;
+             fhkb:birthYear 142 ;
+             fhkb:familyName "Liu"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#LiuShi
 fhkb:LiuShi rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:CaoCao .
+            fhkb:hasSpouse fhkb:CaoCao ;
+            fhkb:familyName "Liu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#LiuXie
+fhkb:LiuXie rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasVassal fhkb:CaoCao ,
+                           fhkb:KongRong ,
+                           fhkb:LiuBiao ,
+                           fhkb:LiuZhang ,
+                           fhkb:TaoQian ,
+                           fhkb:YuanShao ,
+                           fhkb:ZhangLu ;
+            fhkb:birthYear 181 ;
+            fhkb:familyName "Liu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#LiuZhang
+fhkb:LiuZhang rdf:type owl:NamedIndividual ,
+                       fhkb:Person ;
+              fhkb:familyName "Liu"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Male
@@ -804,14 +924,115 @@ fhkb:Male rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#MaoShi
 fhkb:MaoShi rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:CaoRui .
+            fhkb:hasSpouse fhkb:CaoRui ;
+            fhkb:familyName "Mao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#SimaYan
+fhkb:SimaYan rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasFather fhkb:SimaZhao ;
+             fhkb:birthYear 236 ;
+             fhkb:familyName "Sima"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#SimaYi
+fhkb:SimaYi rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:birthYear 179 ;
+            fhkb:familyName "Sima"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#SimaZhao
+fhkb:SimaZhao rdf:type owl:NamedIndividual ,
+                       fhkb:Person ;
+              fhkb:hasFather fhkb:SimaYi ;
+              fhkb:birthYear 211 ;
+              fhkb:familyName "Sima"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#TaoQian
+fhkb:TaoQian rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:birthYear 132 ;
+             fhkb:familyName "Tao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#WenPin
+fhkb:WenPin rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:familyName "Wen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#XiahouDun
+fhkb:XiahouDun rdf:type owl:NamedIndividual ,
+                        fhkb:Person ;
+               fhkb:hasBloodrelation fhkb:CaoCao ;
+               fhkb:familyName "Xiahou"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#XiahouYuan
+fhkb:XiahouYuan rdf:type owl:NamedIndividual ,
+                         fhkb:Person ;
+                fhkb:hasBloodrelation fhkb:CaoCao ;
+                fhkb:familyName "Xiahou"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#YuanShang
+fhkb:YuanShang rdf:type owl:NamedIndividual ,
+                        fhkb:Person ;
+               fhkb:hasFather fhkb:YuanShao ;
+               fhkb:familyName "Yuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#YuanShao
+fhkb:YuanShao rdf:type owl:NamedIndividual ,
+                       fhkb:Person ;
+              fhkb:hasBrother fhkb:YuanShu ;
+              fhkb:familyName "Yuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#YuanShu
+fhkb:YuanShu rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasBrother fhkb:YuanShao ;
+             fhkb:familyName "Yuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#YuanTan
+fhkb:YuanTan rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasFather fhkb:YuanShao ;
+             fhkb:familyName "Yuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#YuanXi
+fhkb:YuanXi rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:YuanShao ;
+            fhkb:familyName "Yuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#ZhangLu
+fhkb:ZhangLu rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:familyName "Zhang"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#ZhenJi
 fhkb:ZhenJi rdf:type owl:NamedIndividual ,
                      fhkb:Person ;
-            fhkb:hasSpouse fhkb:CaoPi ;
-            fhkb:birthYear 183 .
+            fhkb:hasSpouse fhkb:CaoPi ,
+                           fhkb:YuanTan ;
+            fhkb:birthYear 183 ;
+            fhkb:familyName "Zhen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#ZouShi
+fhkb:ZouShi rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasSpouse fhkb:CaoSong ;
+            fhkb:familyName "Zou"^^xsd:string .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
