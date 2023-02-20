@@ -83,8 +83,8 @@ fhkb:hasDaughterInLaw rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf fhkb:hasInLaw ;
                       owl:inverseOf fhkb:isDaughterInLawOf ;
                       rdfs:domain fhkb:Person ;
-                      owl:propertyChainAxiom ( fhkb:isSpouseOf
-                                               fhkb:hasChild
+                      owl:propertyChainAxiom ( fhkb:hasSon
+                                               fhkb:hasSpouse
                                              ) .
 
 
@@ -260,7 +260,7 @@ fhkb:hasWife rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
 fhkb:isAncestorOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf fhkb:hasRelation .
+                  rdfs:subPropertyOf fhkb:hasBloodrelation .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAuntOf
@@ -305,7 +305,7 @@ fhkb:isFatherOf rdf:type owl:ObjectProperty ;
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandParentOf
 fhkb:isGrandParentOf rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf fhkb:hasAncestor .
+                     rdfs:subPropertyOf fhkb:hasBloodrelation .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandparentOf
