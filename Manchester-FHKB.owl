@@ -778,6 +778,7 @@ fhkb:CaoFang rdf:type owl:NamedIndividual ,
 fhkb:CaoGuiRen rdf:type owl:NamedIndividual ,
                         fhkb:Person ;
                fhkb:hasFather fhkb:CaoCao ;
+               fhkb:hasHusband fhkb:LiuXie ;
                fhkb:familyName "Cao"^^xsd:string .
 
 
