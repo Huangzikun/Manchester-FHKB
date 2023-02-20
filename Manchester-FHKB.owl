@@ -774,19 +774,27 @@ fhkb:CaoFang rdf:type owl:NamedIndividual ,
              fhkb:familyName "Cao"^^xsd:string .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoGuiRen
-fhkb:CaoGuiRen rdf:type owl:NamedIndividual ,
-                        fhkb:Person ;
-               fhkb:hasFather fhkb:CaoCao ;
-               fhkb:hasHusband fhkb:LiuXie ;
-               fhkb:familyName "Cao"^^xsd:string .
-
-
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoHong
 fhkb:CaoHong rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
              fhkb:hasCousin fhkb:CaoCao ;
              fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoHua
+fhkb:CaoHua rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:CaoCao ;
+            fhkb:hasHusband fhkb:LiuXie ;
+            fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoJie
+fhkb:CaoJie rdf:type owl:NamedIndividual ,
+                     fhkb:Person ;
+            fhkb:hasFather fhkb:CaoCao ;
+            fhkb:hasHusband fhkb:LiuXie ;
+            fhkb:familyName "Cao"^^xsd:string .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoPi
@@ -821,6 +829,14 @@ fhkb:CaoRui rdf:type owl:NamedIndividual ,
 fhkb:CaoSong rdf:type owl:NamedIndividual ,
                       fhkb:Person ;
              fhkb:hasSpouse fhkb:ZouShi ;
+             fhkb:familyName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#CaoXian
+fhkb:CaoXian rdf:type owl:NamedIndividual ,
+                      fhkb:Person ;
+             fhkb:hasFather fhkb:CaoCao ;
+             fhkb:hasHusband fhkb:LiuXie ;
              fhkb:familyName "Cao"^^xsd:string .
 
 
