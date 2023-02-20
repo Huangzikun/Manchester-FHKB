@@ -83,7 +83,11 @@ fhkb:hasDaughterInLaw rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf fhkb:hasInLaw ;
                       owl:inverseOf fhkb:isDaughterInLawOf ;
                       rdfs:domain fhkb:Person ;
-                      owl:propertyChainAxiom ( fhkb:hasSon
+                      owl:propertyChainAxiom ( fhkb:hasChild
+                                               fhkb:isFatherOf
+                                               fhkb:hasMother
+                                             ) ,
+                                             ( fhkb:hasSon
                                                fhkb:hasSpouse
                                              ) .
 
@@ -233,6 +237,20 @@ fhkb:hasSon rdf:type owl:ObjectProperty ;
             rdfs:range fhkb:Man .
 
 
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSonInLaw
+fhkb:hasSonInLaw rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fhkb:hasInLaw ;
+                 owl:inverseOf fhkb:isSonInLawOf ;
+                 rdfs:domain fhkb:Person ;
+                 owl:propertyChainAxiom ( fhkb:hasChild
+                                          fhkb:isMotherOf
+                                          fhkb:hasFather
+                                        ) ,
+                                        ( fhkb:hasDaughter
+                                          fhkb:hasSpouse
+                                        ) .
+
+
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSpouse
 fhkb:hasSpouse rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf fhkb:hasRelation ;
@@ -346,6 +364,11 @@ fhkb:isParentOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSisterOf
 fhkb:isSisterOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf fhkb:hasSibling .
+
+
+###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSonInLawOf
+fhkb:isSonInLawOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf fhkb:isInLawOf .
 
 
 ###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSonOf
