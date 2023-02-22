@@ -161,7 +161,7 @@ sg:hasSon rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/SANGUO#hasSpouse
 sg:hasSpouse rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf sg:hasRelation ;
-             rdf:type owl:TransitiveProperty .
+             rdf:type owl:SymmetricProperty .
 
 
 ###  http://www.semanticweb.org/lihekun/SANGUO#hasUncle
