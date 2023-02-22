@@ -1,0 +1,823 @@
+@prefix : <http://www.semanticweb.org/lihekun/SANGUO#> .
+@prefix sg: <http://www.semanticweb.org/lihekun/SANGUO#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lihekun/SANGUO> .
+
+<http://www.semanticweb.org/lihekun/SANGUO> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasAncestor
+sg:hasAncestor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasBloodrelation ;
+               owl:inverseOf sg:isAncestorOf ;
+               owl:propertyChainAxiom ( sg:hasParent
+                                      ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasAunt
+sg:hasAunt rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf sg:hasBloodrelation ;
+           owl:inverseOf sg:isAuntOf ;
+           rdfs:range sg:Woman ;
+           owl:propertyChainAxiom ( sg:hasParent
+                                    sg:hasParent
+                                    sg:hasDaughter
+                                  ) ,
+                                  ( sg:hasParent
+                                    sg:hasSister
+                                  ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasBloodrelation
+sg:hasBloodrelation rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasBrother
+sg:hasBrother rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasSibling ;
+              owl:inverseOf sg:isBrotherOf ;
+              rdfs:domain sg:Person ;
+              rdfs:range sg:Man ;
+              owl:propertyChainAxiom ( sg:hasParent
+                                       sg:hasSon
+                                     ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasChild
+sg:hasChild rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation ;
+            owl:inverseOf sg:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasDaughter
+sg:hasDaughter rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasChild ;
+               owl:inverseOf sg:isDaughterOf ;
+               rdfs:domain sg:Person ;
+               rdfs:range sg:Woman .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasFather
+sg:hasFather rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasParent ;
+             owl:inverseOf sg:isFatherOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Man .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandParent
+sg:hasGrandParent rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasAncestor ;
+                  owl:inverseOf sg:isGrandParentOf ;
+                  owl:propertyChainAxiom ( sg:hasGrandfather
+                                         ) ,
+                                         ( sg:hasGrandmother
+                                         ) ,
+                                         ( sg:hasParent
+                                           sg:hasParent
+                                         ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandfather
+sg:hasGrandfather rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasGrandParent ;
+                  owl:propertyChainAxiom ( sg:hasParent
+                                           sg:hasFather
+                                         ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandmother
+sg:hasGrandmother rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasGrandParent ;
+                  owl:propertyChainAxiom ( sg:hasParent
+                                           sg:hasMother
+                                         ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasMother
+sg:hasMother rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasParent ;
+             owl:inverseOf sg:isMotherOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Woman .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasParent
+sg:hasParent rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty sg:isChildOf ;
+             rdfs:subPropertyOf sg:hasAncestor ;
+             owl:inverseOf sg:isParentOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasRelation
+sg:hasRelation rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty ,
+                        owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSex
+sg:hasSex rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain sg:Person ;
+          rdfs:range sg:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSibling
+sg:hasSibling rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasBloodrelation ;
+              rdf:type owl:SymmetricProperty ,
+                       owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSister
+sg:hasSister rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasSibling ;
+             owl:inverseOf sg:isSisterOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Woman ;
+             owl:propertyChainAxiom ( sg:hasParent
+                                      sg:hasDaughter
+                                    ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSon
+sg:hasSon rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf sg:hasChild ;
+          owl:inverseOf sg:isSonOf ;
+          rdfs:domain sg:Person ;
+          rdfs:range sg:Man .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSpouse
+sg:hasSpouse rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasRelation ;
+             rdf:type owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasUncle
+sg:hasUncle rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation ;
+            owl:inverseOf sg:isUncleOf ;
+            rdfs:range sg:Man ;
+            owl:propertyChainAxiom ( sg:hasParent
+                                     sg:hasBrother
+                                   ) ,
+                                   ( sg:hasParent
+                                     sg:hasParent
+                                     sg:hasSon
+                                   ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasVassal
+sg:hasVassal rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasRelation ;
+             owl:inverseOf sg:isVassalOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isAncestorOf
+sg:isAncestorOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isAuntOf
+sg:isAuntOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isBrotherOf
+sg:isBrotherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasSibling .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isChildOf
+sg:isChildOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isDaughterOf
+sg:isDaughterOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf sg:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isFatherOf
+sg:isFatherOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isGrandParentOf
+sg:isGrandParentOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf sg:hasAncestor .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isMotherOf
+sg:isMotherOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isParentOf
+sg:isParentOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isSisterOf
+sg:isSisterOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasSibling .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isSonOf
+sg:isSonOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf sg:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isUncleOf
+sg:isUncleOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isVassalOf
+sg:isVassalOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasRelation .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/SANGUO#birthYear
+sg:birthYear rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#dieYear
+sg:dieYear rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#familyName
+sg:familyName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#firstGivenName
+sg:firstGivenName rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#secondGivenName
+sg:secondGivenName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Ancestor
+sg:Ancestor rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( sg:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty sg:isAncestorOf ;
+                                                         owl:someValuesFrom sg:Person
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Descendant
+sg:Descendant rdf:type owl:Class ;
+              rdfs:subClassOf sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#DomainEntity
+sg:DomainEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#FemaleAncestor
+sg:FemaleAncestor rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( sg:Woman
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty sg:isAncestorOf ;
+                                                               owl:someValuesFrom sg:Person
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf sg:Ancestor .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#FemaleDescendant
+sg:FemaleDescendant rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( sg:Woman
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty sg:hasAncestor ;
+                                                                 owl:someValuesFrom sg:Person
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf sg:Descendant .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Femaleness
+sg:Femaleness rdf:type owl:Class ;
+              rdfs:subClassOf sg:Sex ;
+              owl:disjointWith sg:Maleness .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#MaleAncestor
+sg:MaleAncestor rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( sg:Man
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty sg:isAncestorOf ;
+                                                             owl:someValuesFrom sg:Person
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf sg:Ancestor .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#MaleDescendant
+sg:MaleDescendant rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( sg:Man
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty sg:hasAncestor ;
+                                                               owl:someValuesFrom sg:Person
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf sg:Descendant .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Maleness
+sg:Maleness rdf:type owl:Class ;
+            rdfs:subClassOf sg:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Man
+sg:Man rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( sg:Person
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty sg:hasSex ;
+                                                    owl:someValuesFrom sg:Maleness
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Person
+sg:Person rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sg:hasSex ;
+                                owl:someValuesFrom sg:Sex
+                              ] ;
+          rdfs:subClassOf sg:DomainEntity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasFather ;
+                            owl:someValuesFrom sg:Man
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasMother ;
+                            owl:someValuesFrom sg:Woman
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasSex ;
+                            owl:someValuesFrom sg:Sex
+                          ] ;
+          owl:disjointWith sg:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Sex
+sg:Sex rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:unionOf ( sg:Femaleness
+                                           sg:Maleness
+                                         )
+                           ] ;
+       rdfs:subClassOf sg:DomainEntity .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Woman
+sg:Woman rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( sg:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty sg:hasSex ;
+                                                      owl:someValuesFrom sg:Femaleness
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf sg:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lihekun/SANGUO#BianShi
+sg:BianShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Bian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaiMao
+sg:CaiMao rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cai"^^xsd:string ;
+          sg:firstGivenName "Mao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaiShi
+sg:CaiShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasBrother sg:CaiMao ;
+          sg:familyName "Cai"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoAng
+sg:CaoAng rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasBrother sg:CaoChong ,
+                        sg:CaoPi ;
+          sg:hasFather sg:CaoCao ;
+          sg:hasMother sg:LiuShi ;
+          sg:dieYear 197 ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Ang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoCao
+sg:CaoCao rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasBloodrelation sg:XiaHouyuan ,
+                              sg:Xiahoudun ;
+          sg:hasBrother sg:CaoHong ,
+                        sg:CaoRen ;
+          sg:hasChild sg:CaoAng ,
+                      sg:CaoChong ,
+                      sg:CaoHua ,
+                      sg:CaoJie ,
+                      sg:CaoPi ,
+                      sg:CaoXian ,
+                      sg:CaoZhen ;
+          sg:hasFather sg:CaoSong ;
+          sg:hasMother sg:ZhouShi ;
+          sg:hasSpouse sg:BianShi ,
+                       sg:DingShi ,
+                       sg:HuanShi ,
+                       sg:LiuShi ;
+          sg:hasVassal sg:CaoHong ,
+                       sg:CaoRen ,
+                       sg:CaoZhen ,
+                       sg:SimaYi ,
+                       sg:XiaHouyuan ,
+                       sg:Xiahoudun ;
+          sg:birthYear 155 ;
+          sg:dieYear 220 ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoChong
+sg:CaoChong rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:hasBrother sg:CaoAng ,
+                          sg:CaoPi ;
+            sg:hasFather sg:CaoCao ;
+            sg:hasMother sg:HuanShi ;
+            sg:birthYear 196 ;
+            sg:dieYear 208 ;
+            sg:familyName "Cao"^^xsd:string ;
+            sg:firstGivenName "Chong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoFang
+sg:CaoFang rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasFather sg:CaoRui ;
+           sg:hasMother sg:MaoShi ;
+           sg:birthYear 232 ;
+           sg:dieYear 274 ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Fang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoHong
+sg:CaoHong rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasBrother sg:CaoCao ;
+           sg:dieYear 232 ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Hong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoHua
+sg:CaoHua rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Jie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoJie
+sg:CaoJie rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:dieYear 260 ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Jie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoPi
+sg:CaoPi rdf:type owl:NamedIndividual ,
+                  sg:Person ;
+         sg:hasBrother sg:CaoAng ,
+                       sg:CaoChong ;
+         sg:hasChild sg:CaoRui ;
+         sg:hasFather sg:CaoCao ;
+         sg:hasMother sg:BianShi ;
+         sg:hasSpouse sg:ZhenJi ;
+         sg:birthYear 187 ;
+         sg:dieYear 226 ;
+         sg:familyName "Cao"^^xsd:string ;
+         sg:firstGivenName "Pi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoRen
+sg:CaoRen rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasBrother sg:CaoCao ;
+          sg:birthYear 168 ;
+          sg:dieYear 223 ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Ren"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoRui
+sg:CaoRui rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasChild sg:CaoFang ;
+          sg:hasFather sg:CaoPi ;
+          sg:hasMother sg:ZhenJi ;
+          sg:hasSpouse sg:MaoShi ;
+          sg:birthYear 206 ;
+          sg:dieYear 239 ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Rui"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoSong
+sg:CaoSong rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasChild sg:CaoCao ;
+           sg:hasSpouse sg:ZhouShi ;
+           sg:dieYear 193 ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Song"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoXian
+sg:CaoXian rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Xian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoZhen
+sg:CaoZhen rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasBrother sg:CaoCao ;
+           sg:dieYear 231 ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Zhen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#DingShi
+sg:DingShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Ding"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#HuanShi
+sg:HuanShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Huan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#HuangZu
+sg:HuangZu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:dieYear 208 ;
+           sg:familyName "Huang"^^xsd:string ;
+           sg:firstGivenName "Zu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#KongRong
+sg:KongRong rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:birthYear 153 ;
+            sg:dieYear 208 ;
+            sg:familyName "Kong"^^xsd:string ;
+            sg:firstGivenName "Rong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuBiao
+sg:LiuBiao rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasSpouse sg:CaiShi ;
+           sg:hasVassal sg:HuangZu ,
+                        sg:WenPing ;
+           sg:birthYear 142 ;
+           sg:dieYear 208 ;
+           sg:familyName "Liu"^^xsd:string ;
+           sg:firstGivenName "Biao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuShi
+sg:LiuShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Liu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuXie
+sg:LiuXie rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasSpouse sg:CaoHua ,
+                       sg:CaoJie ,
+                       sg:CaoXian ;
+          sg:hasVassal sg:CaoCao ,
+                       sg:KongRong ,
+                       sg:LiuBiao ,
+                       sg:LiuZhang ,
+                       sg:TaoQian ,
+                       sg:YuanShao ,
+                       sg:ZhangLu ;
+          sg:birthYear 181 ;
+          sg:dieYear 234 ;
+          sg:familyName "Liu"^^xsd:string ;
+          sg:firstGivenName "Xie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuZhang
+sg:LiuZhang rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Liu"^^xsd:string ;
+            sg:firstGivenName "Zhang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#MaoShi
+sg:MaoShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Mao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaYan
+sg:SimaYan rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasFather sg:SimaZhao ;
+           sg:birthYear 236 ;
+           sg:dieYear 290 ;
+           sg:familyName "Sima"^^xsd:string ;
+           sg:firstGivenName "Yan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaYi
+sg:SimaYi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasChild sg:SimaZhao ;
+          sg:birthYear 179 ;
+          sg:dieYear 251 ;
+          sg:familyName "Sima"^^xsd:string ;
+          sg:firstGivenName "Yi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaZhao
+sg:SimaZhao rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:hasChild sg:SimaYan ;
+            sg:hasFather sg:SimaYi ;
+            sg:birthYear 211 ;
+            sg:dieYear 265 ;
+            sg:familyName "Sima"^^xsd:string ;
+            sg:firstGivenName "Zhao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#TaoQian
+sg:TaoQian rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:birthYear 132 ;
+           sg:dieYear 194 ;
+           sg:familyName "Tao"^^xsd:string ;
+           sg:firstGivenName "Qian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#WenPing
+sg:WenPing rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Wen"^^xsd:string ;
+           sg:firstGivenName "Ping"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#XiaHouyuan
+sg:XiaHouyuan rdf:type owl:NamedIndividual ,
+                       sg:Person ;
+              sg:hasBloodrelation sg:CaoCao ;
+              sg:dieYear 219 ;
+              sg:familyName "Xia"^^xsd:string ;
+              sg:firstGivenName "Houyuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Xiahoudun
+sg:Xiahoudun rdf:type owl:NamedIndividual ,
+                      sg:Person ;
+             sg:hasBloodrelation sg:CaoCao ;
+             sg:dieYear 220 ;
+             sg:familyName "Xia"^^xsd:string ;
+             sg:firstGivenName "Houdun"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShang
+sg:YuanShang rdf:type owl:NamedIndividual ,
+                      sg:Person ;
+             sg:hasFather sg:YuanShao ;
+             sg:dieYear 207 ;
+             sg:familyName "Yuan"^^xsd:string ;
+             sg:firstGivenName "Shang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShao
+sg:YuanShao rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:hasBrother sg:YuanShu ;
+            sg:hasChild sg:YuanShang ,
+                        sg:YuanTan ,
+                        sg:YuanXi ;
+            sg:dieYear 202 ;
+            sg:familyName "Yuan"^^xsd:string ;
+            sg:firstGivenName "Shao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShu
+sg:YuanShu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasBrother sg:YuanShao ;
+           sg:dieYear 199 ;
+           sg:familyName "Yuan"^^xsd:string ;
+           sg:firstGivenName "Shu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanTan
+sg:YuanTan rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasFather sg:YuanShao ;
+           sg:dieYear 205 ;
+           sg:familyName "Yuan"^^xsd:string ;
+           sg:firstGivenName "Tan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanXi
+sg:YuanXi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasFather sg:YuanShao ;
+          sg:dieYear 207 ;
+          sg:familyName "Yuan"^^xsd:string ;
+          sg:firstGivenName "Xi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhangLu
+sg:ZhangLu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Zhang"^^xsd:string ;
+           sg:firstGivenName "Lu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhenJi
+sg:ZhenJi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:hasSpouse sg:YuanTan ;
+          sg:familyName "Zhen"^^xsd:string ;
+          sg:firstGivenName "Ji"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhouShi
+sg:ZhouShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:hasChild sg:CaoCao ;
+           sg:hasSpouse sg:CaoSong ;
+           sg:familyName "Zhou"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
