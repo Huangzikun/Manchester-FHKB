@@ -172,12 +172,15 @@ sg:hasUncle rdf:type owl:ObjectProperty ;
             owl:inverseOf sg:isUncleOf ;
             rdfs:range sg:Man ;
             owl:propertyChainAxiom ( sg:hasParent
-                                     sg:hasBrother
-                                   ) ,
-                                   ( sg:hasParent
                                      sg:hasParent
                                      sg:hasSon
                                    ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasVassal
+sg:hasVassal rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasRelation ;
+             owl:inverseOf sg:isVassalOf .
 
 
 ###  http://www.semanticweb.org/lihekun/SANGUO#isAncestorOf
@@ -238,6 +241,11 @@ sg:isSonOf rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/lihekun/SANGUO#isUncleOf
 sg:isUncleOf rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isVassalOf
+sg:isVassalOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasRelation .
 
 
 #################################################################
@@ -434,6 +442,7 @@ sg:CaiMao rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaiShi
 sg:CaiShi rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasBrother sg:CaiMao ;
           sg:familyName "Cai"^^xsd:string .
 
 
@@ -447,6 +456,25 @@ sg:CaoAng rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaoCao
 sg:CaoCao rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasBrother sg:CaoHong ,
+                        sg:CaoRen ;
+          sg:hasChild sg:CaoAng ,
+                      sg:CaoChong ,
+                      sg:CaoHua ,
+                      sg:CaoJie ,
+                      sg:CaoPi ,
+                      sg:CaoXian ,
+                      sg:CaoZhen ;
+          sg:hasSpouse sg:BianShi ,
+                       sg:DingShi ,
+                       sg:HuanShi ,
+                       sg:LiuShi ;
+          sg:hasVassal sg:CaoHong ,
+                       sg:CaoRen ,
+                       sg:CaoZhen ,
+                       sg:SimaYi ,
+                       sg:XiaHouyuan ,
+                       sg:Xiahoudun ;
           sg:familyName "Cao"^^xsd:string ;
           sg:firstGivenName "Cao"^^xsd:string .
 
@@ -489,6 +517,8 @@ sg:CaoJie rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaoPi
 sg:CaoPi rdf:type owl:NamedIndividual ,
                   sg:Person ;
+         sg:hasChild sg:CaoRui ;
+         sg:hasSpouse sg:ZhenJi ;
          sg:familyName "Cao"^^xsd:string ;
          sg:firstGivenName "Pi"^^xsd:string .
 
@@ -503,6 +533,8 @@ sg:CaoRen rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaoRui
 sg:CaoRui rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasChild sg:CaoFang ;
+          sg:hasSpouse sg:MaoShi ;
           sg:familyName "Cao"^^xsd:string ;
           sg:firstGivenName "Rui"^^xsd:string .
 
@@ -510,6 +542,8 @@ sg:CaoRui rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaoSong
 sg:CaoSong rdf:type owl:NamedIndividual ,
                     sg:Person ;
+           sg:hasChild sg:CaoCao ;
+           sg:hasSpouse sg:ZhouShi ;
            sg:familyName "Cao"^^xsd:string ;
            sg:firstGivenName "Song"^^xsd:string .
 
@@ -557,6 +591,9 @@ sg:KongRong rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#LiuBiao
 sg:LiuBiao rdf:type owl:NamedIndividual ,
                     sg:Person ;
+           sg:hasSpouse sg:CaiShi ;
+           sg:hasVassal sg:HuangZu ,
+                        sg:WenPing ;
            sg:familyName "Liu"^^xsd:string ;
            sg:firstGivenName "Biao"^^xsd:string .
 
@@ -570,6 +607,16 @@ sg:LiuShi rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#LiuXie
 sg:LiuXie rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasSpouse sg:CaoHua ,
+                       sg:CaoJie ,
+                       sg:CaoXian ;
+          sg:hasVassal sg:CaoCao ,
+                       sg:KongRong ,
+                       sg:LiuBiao ,
+                       sg:LiuZhang ,
+                       sg:TaoQian ,
+                       sg:YuanShao ,
+                       sg:ZhangLu ;
           sg:familyName "Liu"^^xsd:string ;
           sg:firstGivenName "Xie"^^xsd:string .
 
@@ -597,6 +644,7 @@ sg:SimaYan rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#SimaYi
 sg:SimaYi rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasChild sg:SimaZhao ;
           sg:familyName "Sima"^^xsd:string ;
           sg:firstGivenName "Yi"^^xsd:string .
 
@@ -604,6 +652,7 @@ sg:SimaYi rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#SimaZhao
 sg:SimaZhao rdf:type owl:NamedIndividual ,
                      sg:Person ;
+            sg:hasChild sg:SimaYan ;
             sg:familyName "Sima"^^xsd:string ;
             sg:firstGivenName "Zhao"^^xsd:string .
 
@@ -646,6 +695,10 @@ sg:YuanShang rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#YuanShao
 sg:YuanShao rdf:type owl:NamedIndividual ,
                      sg:Person ;
+            sg:hasBrother sg:YuanShu ;
+            sg:hasChild sg:YuanShang ,
+                        sg:YuanTan ,
+                        sg:YuanXi ;
             sg:familyName "Yuan"^^xsd:string ;
             sg:firstGivenName "Shao"^^xsd:string .
 
@@ -653,6 +706,7 @@ sg:YuanShao rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#YuanShu
 sg:YuanShu rdf:type owl:NamedIndividual ,
                     sg:Person ;
+           sg:hasBrother sg:YuanShao ;
            sg:familyName "Yuan"^^xsd:string ;
            sg:firstGivenName "Shu"^^xsd:string .
 
@@ -681,6 +735,7 @@ sg:ZhangLu rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#ZhenJi
 sg:ZhenJi rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasSpouse sg:YuanTan ;
           sg:familyName "Zhen"^^xsd:string ;
           sg:firstGivenName "Ji"^^xsd:string .
 
@@ -688,6 +743,8 @@ sg:ZhenJi rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#ZhouShi
 sg:ZhouShi rdf:type owl:NamedIndividual ,
                     sg:Person ;
+           sg:hasChild sg:CaoCao ;
+           sg:hasSpouse sg:CaoSong ;
            sg:familyName "Zhou"^^xsd:string .
 
 
