@@ -90,3 +90,16 @@ sg:hasParent(?a, ?b) ^ sg:hasParent(?b, ?c) ^ sg:Man(?c) -> sqwrl:select(?c, ?a)
 ```
 sg:hasSpouse(?a, ?b) ^ sg:hasParent(?b, ?p) ^ sg:Man(?p) -> sqwrl:select(?a, ?p)
 ```
+
+16. 按年龄排序
+```
+SELECT ?object ?t
+WHERE
+{
+?object sg:birthYear ?year .
+?object sg:dieYear ?die .
+BIND (
+(?die - ?year) AS ?t
+)
+} ORDER BY DESC (?t)
+```
