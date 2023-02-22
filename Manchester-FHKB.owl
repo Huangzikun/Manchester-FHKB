@@ -458,6 +458,8 @@ sg:CaoAng rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#CaoCao
 sg:CaoCao rdf:type owl:NamedIndividual ,
                    sg:Person ;
+          sg:hasBloodrelation sg:XiaHouyuan ,
+                              sg:Xiahoudun ;
           sg:hasBrother sg:CaoHong ,
                         sg:CaoRen ;
           sg:hasChild sg:CaoAng ,
@@ -695,6 +697,7 @@ sg:WenPing rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#XiaHouyuan
 sg:XiaHouyuan rdf:type owl:NamedIndividual ,
                        sg:Person ;
+              sg:hasBloodrelation sg:CaoCao ;
               sg:familyName "Xia"^^xsd:string ;
               sg:firstGivenName "Houyuan"^^xsd:string .
 
@@ -702,6 +705,7 @@ sg:XiaHouyuan rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/lihekun/SANGUO#Xiahoudun
 sg:Xiahoudun rdf:type owl:NamedIndividual ,
                       sg:Person ;
+             sg:hasBloodrelation sg:CaoCao ;
              sg:familyName "Xia"^^xsd:string ;
              sg:firstGivenName "Houdun"^^xsd:string .
 
