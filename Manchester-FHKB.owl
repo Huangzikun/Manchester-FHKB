@@ -1,854 +1,694 @@
-@prefix : <http://www.semanticweb.org/lihekun/Manchester-FHKB#> .
+@prefix : <http://www.semanticweb.org/lihekun/SANGUO#> .
+@prefix sg: <http://www.semanticweb.org/lihekun/SANGUO#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix fhkb: <http://www.semanticweb.org/lihekun/Manchester-FHKB#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/lihekun/Manchester-FHKB> .
+@base <http://www.semanticweb.org/lihekun/SANGUO> .
 
-<http://www.semanticweb.org/lihekun/Manchester-FHKB> rdf:type owl:Ontology .
+<http://www.semanticweb.org/lihekun/SANGUO> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAncestor
-fhkb:hasAncestor rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf fhkb:hasBloodrelation ;
-                 owl:inverseOf fhkb:isAncestorOf ;
-                 rdf:type owl:TransitiveProperty ;
-                 owl:propertyChainAxiom ( fhkb:hasParent
-                                        ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasAunt
-fhkb:hasAunt rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf fhkb:hasBloodrelation ;
-             owl:inverseOf fhkb:isAuntOf ;
-             rdfs:range fhkb:Woman ;
-             owl:propertyChainAxiom ( fhkb:hasParent
-                                      fhkb:hasParent
-                                      fhkb:hasDaughter
-                                    ) ,
-                                    ( fhkb:hasParent
-                                      fhkb:hasSister
-                                    ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBloodrelation
-fhkb:hasBloodrelation rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf fhkb:hasRelation .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasBrother
-fhkb:hasBrother rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:hasSibling ;
-                owl:inverseOf fhkb:isBrotherOf ;
-                rdf:type owl:TransitiveProperty ;
-                rdfs:domain fhkb:Person ;
-                rdfs:range fhkb:Man ;
-                owl:propertyChainAxiom ( fhkb:hasParent
-                                         fhkb:hasSon
-                                       ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasChild
-fhkb:hasChild rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf fhkb:hasBloodrelation ;
-              owl:inverseOf fhkb:isChildOf .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasDaughter
-fhkb:hasDaughter rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf fhkb:hasChild ;
-                 owl:inverseOf fhkb:isDaughterOf ;
-                 rdfs:domain fhkb:Person ;
-                 rdfs:range fhkb:Woman .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasFather
-fhkb:hasFather rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf fhkb:hasParent ;
-               owl:inverseOf fhkb:isFatherOf ;
-               rdfs:domain fhkb:Person ;
-               rdfs:range fhkb:Man .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandParent
-fhkb:hasGrandParent rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasAncestor ;
-                    owl:inverseOf fhkb:isGrandParentOf ;
-                    owl:propertyChainAxiom ( fhkb:hasGrandfather
-                                           ) ,
-                                           ( fhkb:hasGrandmother
-                                           ) ,
-                                           ( fhkb:hasParent
-                                             fhkb:hasParent
-                                           ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandfather
-fhkb:hasGrandfather rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasGrandParent ;
-                    owl:propertyChainAxiom ( fhkb:hasParent
-                                             fhkb:hasFather
-                                           ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasGrandmother
-fhkb:hasGrandmother rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf fhkb:hasGrandParent ;
-                    owl:propertyChainAxiom ( fhkb:hasParent
-                                             fhkb:hasMother
-                                           ) .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasMother
-fhkb:hasMother rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf fhkb:hasParent ;
-               owl:inverseOf fhkb:isMotherOf ;
-               rdfs:domain fhkb:Person ;
-               rdfs:range fhkb:Woman .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasParent
-fhkb:hasParent rdf:type owl:ObjectProperty ;
-               owl:equivalentProperty fhkb:isChildOf ;
-               rdfs:subPropertyOf fhkb:hasAncestor ;
-               owl:inverseOf fhkb:isParentOf ;
-               rdfs:domain fhkb:Person ;
-               rdfs:range fhkb:Person .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasRelation
-fhkb:hasRelation rdf:type owl:ObjectProperty ,
-                          owl:SymmetricProperty .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSex
-fhkb:hasSex rdf:type owl:ObjectProperty ,
-                     owl:FunctionalProperty ;
-            rdfs:domain fhkb:Person ;
-            rdfs:range fhkb:Sex .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSibling
-fhkb:hasSibling rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:hasBloodrelation ;
-                rdf:type owl:SymmetricProperty ,
-                         owl:TransitiveProperty .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSister
-fhkb:hasSister rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf fhkb:hasSibling ;
-               owl:inverseOf fhkb:isSisterOf ;
+###  http://www.semanticweb.org/lihekun/SANGUO#hasAncestor
+sg:hasAncestor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasBloodrelation ;
+               owl:inverseOf sg:isAncestorOf ;
                rdf:type owl:TransitiveProperty ;
-               rdfs:domain fhkb:Person ;
-               rdfs:range fhkb:Woman ;
-               owl:propertyChainAxiom ( fhkb:hasParent
-                                        fhkb:hasDaughter
+               owl:propertyChainAxiom ( sg:hasParent
                                       ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasSon
-fhkb:hasSon rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf fhkb:hasChild ;
-            owl:inverseOf fhkb:isSonOf ;
-            rdfs:domain fhkb:Person ;
-            rdfs:range fhkb:Man .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasAunt
+sg:hasAunt rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf sg:hasBloodrelation ;
+           owl:inverseOf sg:isAuntOf ;
+           rdfs:range sg:Woman ;
+           owl:propertyChainAxiom ( sg:hasParent
+                                    sg:hasParent
+                                    sg:hasDaughter
+                                  ) ,
+                                  ( sg:hasParent
+                                    sg:hasSister
+                                  ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#hasUncle
-fhkb:hasUncle rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf fhkb:hasBloodrelation ;
-              owl:inverseOf fhkb:isUncleOf ;
-              rdfs:range fhkb:Man ;
-              owl:propertyChainAxiom ( fhkb:hasParent
-                                       fhkb:hasBrother
-                                     ) ,
-                                     ( fhkb:hasParent
-                                       fhkb:hasParent
-                                       fhkb:hasSon
+###  http://www.semanticweb.org/lihekun/SANGUO#hasBloodrelation
+sg:hasBloodrelation rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasBrother
+sg:hasBrother rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasSibling ;
+              owl:inverseOf sg:isBrotherOf ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain sg:Person ;
+              rdfs:range sg:Man ;
+              owl:propertyChainAxiom ( sg:hasParent
+                                       sg:hasSon
                                      ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAncestorOf
-fhkb:isAncestorOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf fhkb:hasRelation .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasChild
+sg:hasChild rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation ;
+            owl:inverseOf sg:isChildOf .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isAuntOf
-fhkb:isAuntOf rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf fhkb:hasBloodrelation .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasDaughter
+sg:hasDaughter rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasChild ;
+               owl:inverseOf sg:isDaughterOf ;
+               rdfs:domain sg:Person ;
+               rdfs:range sg:Woman .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isBrotherOf
-fhkb:isBrotherOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf fhkb:hasSibling .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasFather
+sg:hasFather rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasParent ;
+             owl:inverseOf sg:isFatherOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Man .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isChildOf
-fhkb:isChildOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf fhkb:hasBloodrelation .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandParent
+sg:hasGrandParent rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasAncestor ;
+                  owl:inverseOf sg:isGrandParentOf ;
+                  owl:propertyChainAxiom ( sg:hasGrandfather
+                                         ) ,
+                                         ( sg:hasGrandmother
+                                         ) ,
+                                         ( sg:hasParent
+                                           sg:hasParent
+                                         ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isDaughterOf
-fhkb:isDaughterOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf fhkb:isChildOf .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandfather
+sg:hasGrandfather rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasGrandParent ;
+                  owl:propertyChainAxiom ( sg:hasParent
+                                           sg:hasFather
+                                         ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isFatherOf
-fhkb:isFatherOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:isParentOf .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasGrandmother
+sg:hasGrandmother rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sg:hasGrandParent ;
+                  owl:propertyChainAxiom ( sg:hasParent
+                                           sg:hasMother
+                                         ) .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isGrandParentOf
-fhkb:isGrandParentOf rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf fhkb:hasAncestor .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasMother
+sg:hasMother rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasParent ;
+             owl:inverseOf sg:isMotherOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Woman .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isMotherOf
-fhkb:isMotherOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:isParentOf .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasParent
+sg:hasParent rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty sg:isChildOf ;
+             rdfs:subPropertyOf sg:hasAncestor ;
+             owl:inverseOf sg:isParentOf ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Person .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isParentOf
-fhkb:isParentOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:hasRelation .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasRelation
+sg:hasRelation rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSisterOf
-fhkb:isSisterOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf fhkb:hasSibling .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSex
+sg:hasSex rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain sg:Person ;
+          rdfs:range sg:Sex .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isSonOf
-fhkb:isSonOf rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf fhkb:isChildOf .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSibling
+sg:hasSibling rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasBloodrelation ;
+              rdf:type owl:SymmetricProperty ,
+                       owl:TransitiveProperty .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#isUncleOf
-fhkb:isUncleOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf fhkb:hasBloodrelation .
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSister
+sg:hasSister rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasSibling ;
+             owl:inverseOf sg:isSisterOf ;
+             rdf:type owl:TransitiveProperty ;
+             rdfs:domain sg:Person ;
+             rdfs:range sg:Woman ;
+             owl:propertyChainAxiom ( sg:hasParent
+                                      sg:hasDaughter
+                                    ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSon
+sg:hasSon rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf sg:hasChild ;
+          owl:inverseOf sg:isSonOf ;
+          rdfs:domain sg:Person ;
+          rdfs:range sg:Man .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasSpouse
+sg:hasSpouse rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasRelation ;
+             rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#hasUncle
+sg:hasUncle rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation ;
+            owl:inverseOf sg:isUncleOf ;
+            rdfs:range sg:Man ;
+            owl:propertyChainAxiom ( sg:hasParent
+                                     sg:hasBrother
+                                   ) ,
+                                   ( sg:hasParent
+                                     sg:hasParent
+                                     sg:hasSon
+                                   ) .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isAncestorOf
+sg:isAncestorOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isAuntOf
+sg:isAuntOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isBrotherOf
+sg:isBrotherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf sg:hasSibling .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isChildOf
+sg:isChildOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasBloodrelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isDaughterOf
+sg:isDaughterOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf sg:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isFatherOf
+sg:isFatherOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isGrandParentOf
+sg:isGrandParentOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf sg:hasAncestor .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isMotherOf
+sg:isMotherOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:isParentOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isParentOf
+sg:isParentOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasRelation .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isSisterOf
+sg:isSisterOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sg:hasSibling .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isSonOf
+sg:isSonOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf sg:isChildOf .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#isUncleOf
+sg:isUncleOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sg:hasBloodrelation .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#birthYear
-fhkb:birthYear rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty .
+###  http://www.semanticweb.org/lihekun/SANGUO#birthYear
+sg:birthYear rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#familyName
-fhkb:familyName rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty .
+###  http://www.semanticweb.org/lihekun/SANGUO#familyName
+sg:familyName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#firstGivenName
-fhkb:firstGivenName rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf owl:topDataProperty .
+###  http://www.semanticweb.org/lihekun/SANGUO#firstGivenName
+sg:firstGivenName rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#secondGivenName
-fhkb:secondGivenName rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf owl:topDataProperty .
+###  http://www.semanticweb.org/lihekun/SANGUO#secondGivenName
+sg:secondGivenName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ancestor
-fhkb:Ancestor rdf:type owl:Class ;
-              owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+###  http://www.semanticweb.org/lihekun/SANGUO#Ancestor
+sg:Ancestor rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( sg:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty sg:isAncestorOf ;
+                                                         owl:someValuesFrom sg:Person
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Descendant
+sg:Descendant rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( sg:Person
                                                          [ rdf:type owl:Restriction ;
-                                                           owl:onProperty fhkb:isAncestorOf ;
-                                                           owl:someValuesFrom fhkb:Person
+                                                           owl:onProperty sg:hasAncestor ;
+                                                           owl:someValuesFrom sg:Person
                                                          ]
                                                        ) ;
                                     rdf:type owl:Class
                                   ] ;
-              rdfs:subClassOf fhkb:Person .
+              rdfs:subClassOf sg:Person .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Descendant
-fhkb:Descendant rdf:type owl:Class ;
-                owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty fhkb:hasAncestor ;
-                                                             owl:someValuesFrom fhkb:Person
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ;
-                rdfs:subClassOf fhkb:Person .
+###  http://www.semanticweb.org/lihekun/SANGUO#DomainEntity
+sg:DomainEntity rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#DomainEntity
-fhkb:DomainEntity rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#FemaleAncestor
-fhkb:FemaleAncestor rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( fhkb:Woman
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty fhkb:isAncestorOf ;
-                                                                 owl:someValuesFrom fhkb:Person
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf fhkb:Ancestor .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#FemaleDescendant
-fhkb:FemaleDescendant rdf:type owl:Class ;
-                      owl:equivalentClass [ owl:intersectionOf ( fhkb:Woman
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty fhkb:hasAncestor ;
-                                                                   owl:someValuesFrom fhkb:Person
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ;
-                      rdfs:subClassOf fhkb:Descendant .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Femaleness
-fhkb:Femaleness rdf:type owl:Class ;
-                rdfs:subClassOf fhkb:Sex ;
-                owl:disjointWith fhkb:Maleness .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#MaleAncestor
-fhkb:MaleAncestor rdf:type owl:Class ;
-                  owl:equivalentClass [ owl:intersectionOf ( fhkb:Man
+###  http://www.semanticweb.org/lihekun/SANGUO#FemaleAncestor
+sg:FemaleAncestor rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( sg:Woman
                                                              [ rdf:type owl:Restriction ;
-                                                               owl:onProperty fhkb:isAncestorOf ;
-                                                               owl:someValuesFrom fhkb:Person
+                                                               owl:onProperty sg:isAncestorOf ;
+                                                               owl:someValuesFrom sg:Person
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
                                       ] ;
-                  rdfs:subClassOf fhkb:Ancestor .
+                  rdfs:subClassOf sg:Ancestor .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#MaleDescendant
-fhkb:MaleDescendant rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( fhkb:Man
+###  http://www.semanticweb.org/lihekun/SANGUO#FemaleDescendant
+sg:FemaleDescendant rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( sg:Woman
                                                                [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty fhkb:hasAncestor ;
-                                                                 owl:someValuesFrom fhkb:Person
+                                                                 owl:onProperty sg:hasAncestor ;
+                                                                 owl:someValuesFrom sg:Person
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
                                         ] ;
-                    rdfs:subClassOf fhkb:Descendant .
+                    rdfs:subClassOf sg:Descendant .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Maleness
-fhkb:Maleness rdf:type owl:Class ;
-              rdfs:subClassOf fhkb:Sex .
+###  http://www.semanticweb.org/lihekun/SANGUO#Femaleness
+sg:Femaleness rdf:type owl:Class ;
+              rdfs:subClassOf sg:Sex ;
+              owl:disjointWith sg:Maleness .
 
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Man
-fhkb:Man rdf:type owl:Class ;
-         owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
+###  http://www.semanticweb.org/lihekun/SANGUO#MaleAncestor
+sg:MaleAncestor rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( sg:Man
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty sg:isAncestorOf ;
+                                                             owl:someValuesFrom sg:Person
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf sg:Ancestor .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#MaleDescendant
+sg:MaleDescendant rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( sg:Man
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty sg:hasAncestor ;
+                                                               owl:someValuesFrom sg:Person
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf sg:Descendant .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Maleness
+sg:Maleness rdf:type owl:Class ;
+            rdfs:subClassOf sg:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Man
+sg:Man rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( sg:Person
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty sg:hasSex ;
+                                                    owl:someValuesFrom sg:Femaleness
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf sg:Person .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Person
+sg:Person rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sg:hasSex ;
+                                owl:someValuesFrom sg:Sex
+                              ] ;
+          rdfs:subClassOf sg:DomainEntity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasFather ;
+                            owl:someValuesFrom sg:Man
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasMother ;
+                            owl:someValuesFrom sg:Woman
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty sg:hasSex ;
+                            owl:someValuesFrom sg:Sex
+                          ] ;
+          owl:disjointWith sg:Sex .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Sex
+sg:Sex rdf:type owl:Class ;
+       rdfs:subClassOf sg:DomainEntity .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Woman
+sg:Woman rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( sg:Person
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty fhkb:hasSex ;
-                                                      owl:someValuesFrom fhkb:Femaleness
+                                                      owl:onProperty sg:hasSex ;
+                                                      owl:someValuesFrom sg:Maleness
                                                     ]
                                                   ) ;
                                rdf:type owl:Class
                              ] ;
-         rdfs:subClassOf fhkb:Person .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Person
-fhkb:Person rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty fhkb:hasSex ;
-                                  owl:someValuesFrom fhkb:Sex
-                                ] ;
-            rdfs:subClassOf fhkb:DomainEntity ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty fhkb:hasFather ;
-                              owl:someValuesFrom fhkb:Man
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty fhkb:hasMother ;
-                              owl:someValuesFrom fhkb:Woman
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty fhkb:hasSex ;
-                              owl:someValuesFrom fhkb:Sex
-                            ] ;
-            owl:disjointWith fhkb:Sex .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Sex
-fhkb:Sex rdf:type owl:Class ;
-         rdfs:subClassOf fhkb:DomainEntity .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Woman
-fhkb:Woman rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( fhkb:Person
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty fhkb:hasSex ;
-                                                        owl:someValuesFrom fhkb:Maleness
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf fhkb:Person .
+         rdfs:subClassOf sg:Person .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Alec_John_Archer
-fhkb:Alec_John_Archer rdf:type owl:NamedIndividual ,
-                               fhkb:Person ;
-                      fhkb:hasFather fhkb:James_Alexander_Archer ;
-                      fhkb:hasMother fhkb:Violet_Heath ;
-                      fhkb:birthYear 1927 ;
-                      fhkb:familyName "Archer"^^xsd:string ;
-                      fhkb:firstGivenName "Alec"^^xsd:string ;
-                      fhkb:secondGivenName "John"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charles_Herbert_Rever
-fhkb:Charles_Herbert_Rever rdf:type owl:NamedIndividual ,
-                                    fhkb:Person ;
-                           fhkb:hasFather fhkb:William_Rever ;
-                           fhkb:hasMother fhkb:Elizabeth_Frances_Jessop ;
-                           fhkb:birthYear 1895 ;
-                           fhkb:familyName "Rever"^^xsd:string ;
-                           fhkb:firstGivenName "Charles"^^xsd:string ;
-                           fhkb:secondGivenName "Herbert"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Caroline_Jane_Bright
-fhkb:Charlotte_Caroline_Jane_Bright rdf:type owl:NamedIndividual ,
-                                             fhkb:Person ;
-                                    fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                                    fhkb:hasMother fhkb:Charlotte_Hewett ;
-                                    fhkb:birthYear 1894 ;
-                                    fhkb:familyName "Bright"^^xsd:string ;
-                                    fhkb:firstGivenName "Charlotte"^^xsd:string ;
-                                    fhkb:secondGivenName "Caroline Jane"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Charlotte_Hewett
-fhkb:Charlotte_Hewett rdf:type owl:NamedIndividual ,
-                               fhkb:Person ;
-                      fhkb:birthYear 1863 ;
-                      fhkb:familyName "Hewett"^^xsd:string ;
-                      fhkb:firstGivenName "Charlotte"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Clare_Bright
-fhkb:Clare_Bright rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:Peter_William_Bright ;
-                  fhkb:hasMother fhkb:Diana_Pool ;
-                  fhkb:birthYear 1966 ;
-                  fhkb:familyName "Bright"^^xsd:string ;
-                  fhkb:firstGivenName "Clare"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#David_Bright
-fhkb:David_Bright rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:William_George_Bright ;
-                  fhkb:hasMother fhkb:Iris_Ellen_Archer ;
-                  fhkb:isSonOf fhkb:William_George_Bright ;
-                  fhkb:birthYear 1934 ;
-                  fhkb:familyName "Bright"^^xsd:string ;
-                  fhkb:firstGivenName "David"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Dereck_Heath
-fhkb:Dereck_Heath rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:birthYear 1927 ;
-                  fhkb:familyName "Heath"^^xsd:string ;
-                  fhkb:firstGivenName "Dereck"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Diana_Pool
-fhkb:Diana_Pool rdf:type owl:NamedIndividual ,
-                         fhkb:Person ;
-                fhkb:familyName "Pool"^^xsd:string ;
-                fhkb:firstGivenName "Diana"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Eileen_Mary_Rever
-fhkb:Eileen_Mary_Rever rdf:type owl:NamedIndividual ,
-                                fhkb:Person ;
-                       fhkb:hasFather fhkb:Charles_Herbert_Rever ;
-                       fhkb:hasMother fhkb:Violet_Sylvia_Steward ;
-                       fhkb:birthYear 1929 ;
-                       fhkb:familyName "Rever"^^xsd:string ;
-                       fhkb:firstGivenName "Eileen"^^xsd:string ;
-                       fhkb:secondGivenName "Mary"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Elizabeth_Frances_Jessop
-fhkb:Elizabeth_Frances_Jessop rdf:type owl:NamedIndividual ,
-                                       fhkb:Person ;
-                              fhkb:birthYear 1869 ;
-                              fhkb:familyName "Jessop"^^xsd:string ;
-                              fhkb:firstGivenName "Elizabeth"^^xsd:string ;
-                              fhkb:secondGivenName "Frances"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ethel_Archer
-fhkb:Ethel_Archer rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:James_Alexander_Archer ;
-                  fhkb:hasMother fhkb:Violet_Heath ;
-                  fhkb:birthYear 1912 ;
-                  fhkb:familyName "Archer"^^xsd:string ;
-                  fhkb:firstGivenName "Ethel"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Frederick_Herbert_Bright
-fhkb:Frederick_Herbert_Bright rdf:type owl:NamedIndividual ,
-                                       fhkb:Person ;
-                              fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                              fhkb:hasMother fhkb:Charlotte_Hewett ;
-                              fhkb:birthYear 1889 ;
-                              fhkb:familyName "Bright"^^xsd:string ;
-                              fhkb:firstGivenName "Frederick"^^xsd:string ;
-                              fhkb:secondGivenName "Herbert"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Henry_Edmund_Bright
-fhkb:Henry_Edmund_Bright rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:birthYear 1862 ;
-                         fhkb:familyName "Bright"^^xsd:string ;
-                         fhkb:firstGivenName "Henry"^^xsd:string ;
-                         fhkb:secondGivenName "Edmund"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Henry_Edmund_Bright_1887
-fhkb:Henry_Edmund_Bright_1887 rdf:type owl:NamedIndividual ,
-                                       fhkb:Person ;
-                              fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                              fhkb:hasMother fhkb:Charlotte_Hewett ;
-                              fhkb:birthYear 1887 ;
-                              fhkb:familyName "Bright"^^xsd:string ;
-                              fhkb:firstGivenName "Henry"^^xsd:string ;
-                              fhkb:secondGivenName "Edmund"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Ian_Bright
-fhkb:Ian_Bright rdf:type owl:NamedIndividual ,
-                         fhkb:Person ;
-                fhkb:hasFather fhkb:John_Bright ;
-                fhkb:hasMother fhkb:Joyce_Gosport ;
-                fhkb:isSonOf fhkb:John_Bright ;
-                fhkb:birthYear 1959 ;
-                fhkb:familyName "Bright"^^xsd:string ;
-                fhkb:firstGivenName "Ian"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Iris_Ellen_Archer
-fhkb:Iris_Ellen_Archer rdf:type owl:NamedIndividual ,
-                                fhkb:Person ;
-                       fhkb:hasFather fhkb:James_Alexander_Archer ;
-                       fhkb:hasMother fhkb:Violet_Heath ;
-                       fhkb:birthYear 1906 ;
-                       fhkb:familyName "Archer"^^xsd:string ;
-                       fhkb:firstGivenName "Iris"^^xsd:string ;
-                       fhkb:secondGivenName "Ellen"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Alexander_Archer
-fhkb:James_Alexander_Archer rdf:type owl:NamedIndividual ,
-                                     fhkb:Person ;
-                            fhkb:birthYear 1882 ;
-                            fhkb:familyName "Archer"^^xsd:string ;
-                            fhkb:firstGivenName "James"^^xsd:string ;
-                            fhkb:secondGivenName "Alexander"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Bright
-fhkb:James_Bright rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:Peter_William_Bright ;
-                  fhkb:hasMother fhkb:Diana_Pool ;
-                  fhkb:isDaughterOf fhkb:John_Bright ;
-                  fhkb:birthYear 1964 ;
-                  fhkb:familyName "Bright"^^xsd:string ;
-                  fhkb:firstGivenName "James"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#James_Frank_Hayden_Bright
-fhkb:James_Frank_Hayden_Bright rdf:type owl:NamedIndividual ,
-                                        fhkb:Person ;
-                               fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                               fhkb:hasMother fhkb:Charlotte_Hewett ;
-                               fhkb:birthYear 1891 ;
-                               fhkb:familyName "Bright"^^xsd:string ;
-                               fhkb:firstGivenName "James"^^xsd:string ;
-                               fhkb:secondGivenName "Frank"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Janet_Bright
-fhkb:Janet_Bright rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:John_Bright ;
-                  fhkb:hasMother fhkb:Joyce_Gosport ;
-                  fhkb:isDaughterOf fhkb:John_Bright ;
-                  fhkb:birthYear 1964 ;
-                  fhkb:familyName "Bright"^^xsd:string ;
-                  fhkb:firstGivenName "Janet"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#John_Bright
-fhkb:John_Bright rdf:type owl:NamedIndividual ,
-                          fhkb:Person ;
-                 fhkb:hasFather fhkb:William_George_Bright ;
-                 fhkb:hasMother fhkb:Iris_Ellen_Archer ;
-                 fhkb:birthYear 1930 ;
-                 fhkb:familyName "Bright"^^xsd:string ;
-                 fhkb:firstGivenName "John"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#John_Tacey_Steward
-fhkb:John_Tacey_Steward rdf:type owl:NamedIndividual ,
-                                 fhkb:Person ;
-                        fhkb:birthYear 1873 ;
-                        fhkb:familyName "Steward"^^xsd:string ;
-                        fhkb:firstGivenName "John"^^xsd:string ;
-                        fhkb:secondGivenName "Tacey"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Joyce_Archer
-fhkb:Joyce_Archer rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:James_Alexander_Archer ;
-                  fhkb:hasMother fhkb:Violet_Heath ;
-                  fhkb:birthYear 1921 ;
-                  fhkb:familyName "Archer"^^xsd:string ;
-                  fhkb:firstGivenName "Joyce"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Joyce_Gosport
-fhkb:Joyce_Gosport rdf:type owl:NamedIndividual ,
-                            fhkb:Person ;
-                   fhkb:familyName "Gosport"^^xsd:string ;
-                   fhkb:firstGivenName "Joyce"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Julie_Bright
-fhkb:Julie_Bright rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:hasFather fhkb:Peter_William_Bright ;
-                  fhkb:hasMother fhkb:Diana_Pool ;
-                  fhkb:birthYear 1966 ;
-                  fhkb:familyName "Bright"^^xsd:string ;
-                  fhkb:firstGivenName "Julie"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Kathleen_Minnie_Bright
-fhkb:Kathleen_Minnie_Bright rdf:type owl:NamedIndividual ,
-                                     fhkb:Person ;
-                            fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                            fhkb:hasMother fhkb:Charlotte_Hewett ;
-                            fhkb:birthYear 1904 ;
-                            fhkb:familyName "Bright"^^xsd:string ;
-                            fhkb:firstGivenName "Kathleen"^^xsd:string ;
-                            fhkb:secondGivenName "Minnie"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Leonard_John_Bright
-fhkb:Leonard_John_Bright rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                         fhkb:hasMother fhkb:Charlotte_Hewett ;
-                         fhkb:birthYear 1890 ;
-                         fhkb:familyName "Bright"^^xsd:string ;
-                         fhkb:firstGivenName "Leonard"^^xsd:string ;
-                         fhkb:secondGivenName "John"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Lois_Green
-fhkb:Lois_Green rdf:type owl:NamedIndividual ,
-                         fhkb:Person ;
-                fhkb:birthYear 1871 ;
-                fhkb:familyName "Green"^^xsd:string ;
-                fhkb:firstGivenName "Lois"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Margaret_Grace_Rever
-fhkb:Margaret_Grace_Rever rdf:type owl:NamedIndividual ,
-                                   fhkb:Person ;
-                          fhkb:hasFather fhkb:Charles_Herbert_Rever ;
-                          fhkb:hasMother fhkb:Violet_Sylvia_Steward ;
-                          fhkb:birthYear 1934 ;
-                          fhkb:familyName "Rever"^^xsd:string ;
-                          fhkb:firstGivenName "Margaret"^^xsd:string ;
-                          fhkb:secondGivenName "Grace"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Anthony_Heath
-fhkb:Mark_Anthony_Heath rdf:type owl:NamedIndividual ,
-                                 fhkb:Person ;
-                        fhkb:hasFather fhkb:Dereck_Heath ;
-                        fhkb:hasMother fhkb:Eileen_Mary_Rever ;
-                        fhkb:birthYear 1960 ;
-                        fhkb:familyName "Heath"^^xsd:string ;
-                        fhkb:firstGivenName "Mark"^^xsd:string ;
-                        fhkb:secondGivenName "Anthony"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Mark_Bright
-fhkb:Mark_Bright rdf:type owl:NamedIndividual ,
-                          fhkb:Person ;
-                 fhkb:hasFather fhkb:John_Bright ;
-                 fhkb:hasMother fhkb:Joyce_Gosport ;
-                 fhkb:isSonOf fhkb:John_Bright ;
-                 fhkb:birthYear 1956 ;
-                 fhkb:familyName "Bright"^^xsd:string ;
-                 fhkb:firstGivenName "Mark"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nicholas_Charles_Heath
-fhkb:Nicholas_Charles_Heath rdf:type owl:NamedIndividual ,
-                                     fhkb:Person ;
-                            fhkb:hasFather fhkb:Dereck_Heath ;
-                            fhkb:hasMother fhkb:Eileen_Mary_Rever ;
-                            fhkb:birthYear 1964 ;
-                            fhkb:familyName "Heath"^^xsd:string ;
-                            fhkb:firstGivenName "Nicholas"^^xsd:string ;
-                            fhkb:secondGivenName "Charles"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Nora_Ada_Bright
-fhkb:Nora_Ada_Bright rdf:type owl:NamedIndividual ,
-                              fhkb:Person ;
-                     fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                     fhkb:hasMother fhkb:Charlotte_Hewett ;
-                     fhkb:birthYear 1899 ;
-                     fhkb:familyName "Bright"^^xsd:string ;
-                     fhkb:firstGivenName "Nora"^^xsd:string ;
-                     fhkb:secondGivenName "Ada"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Norman_James_Archer
-fhkb:Norman_James_Archer rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:hasFather fhkb:James_Alexander_Archer ;
-                         fhkb:hasMother fhkb:Violet_Heath ;
-                         fhkb:birthYear 1909 ;
-                         fhkb:familyName "Archer"^^xsd:string ;
-                         fhkb:firstGivenName "Norman"^^xsd:string ;
-                         fhkb:secondGivenName "James"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Peter_William_Bright
-fhkb:Peter_William_Bright rdf:type owl:NamedIndividual ,
-                                   fhkb:Person ;
-                          fhkb:hasFather fhkb:William_George_Bright ;
-                          fhkb:hasMother fhkb:Iris_Ellen_Archer ;
-                          fhkb:birthYear 1941 ;
-                          fhkb:familyName "Bright"^^xsd:string ;
-                          fhkb:firstGivenName "Peter"^^xsd:string ;
-                          fhkb:secondGivenName "William"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Richard_John_Bright
-fhkb:Richard_John_Bright rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:hasFather fhkb:David_Bright ;
-                         fhkb:hasMother fhkb:Margaret_Grace_Rever ;
-                         fhkb:isSonOf fhkb:David_Bright ;
-                         fhkb:birthYear 1962 ;
-                         fhkb:familyName "Bright"^^xsd:string ;
-                         fhkb:firstGivenName "Richard"^^xsd:string ;
-                         fhkb:secondGivenName "John"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Robert_David_Bright
-fhkb:Robert_David_Bright rdf:type owl:NamedIndividual ,
-                                  fhkb:Person ;
-                         fhkb:hasFather fhkb:David_Bright ;
-                         fhkb:hasMother fhkb:Margaret_Grace_Rever ;
-                         fhkb:isSonOf fhkb:David_Bright ;
-                         fhkb:birthYear 1965 ;
-                         fhkb:familyName "Bright"^^xsd:string ;
-                         fhkb:firstGivenName "Robert"^^xsd:string ;
-                         fhkb:secondGivenName "David"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Violet_Heath
-fhkb:Violet_Heath rdf:type owl:NamedIndividual ,
-                           fhkb:Person ;
-                  fhkb:birthYear 1887 ;
-                  fhkb:familyName "Heath"^^xsd:string ;
-                  fhkb:firstGivenName "Violet"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#Violet_Sylvia_Steward
-fhkb:Violet_Sylvia_Steward rdf:type owl:NamedIndividual ,
-                                    fhkb:Person ;
-                           fhkb:hasFather fhkb:John_Tacey_Steward ;
-                           fhkb:hasMother fhkb:Lois_Green ;
-                           fhkb:birthYear 1894 ;
-                           fhkb:familyName "Steward"^^xsd:string ;
-                           fhkb:firstGivenName "Violet"^^xsd:string ;
-                           fhkb:secondGivenName "Sylvia"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Bright
-fhkb:William_Bright rdf:type owl:NamedIndividual ,
-                             fhkb:Person ;
-                    fhkb:hasFather fhkb:John_Bright ;
-                    fhkb:hasMother fhkb:Joyce_Gosport ;
-                    fhkb:isDaughterOf fhkb:John_Bright ;
-                    fhkb:birthYear 1970 ;
-                    fhkb:familyName "Bright"^^xsd:string ;
-                    fhkb:firstGivenName "William"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_George_Bright
-fhkb:William_George_Bright rdf:type owl:NamedIndividual ,
-                                    fhkb:Person ;
-                           fhkb:hasFather fhkb:Henry_Edmund_Bright ;
-                           fhkb:hasMother fhkb:Charlotte_Hewett ;
-                           fhkb:birthYear 1901 ;
-                           fhkb:familyName "Bright"^^xsd:string ;
-                           fhkb:firstGivenName "William"^^xsd:string ;
-                           fhkb:secondGivenName "George"^^xsd:string .
-
-
-###  http://www.semanticweb.org/lihekun/Manchester-FHKB#William_Rever
-fhkb:William_Rever rdf:type owl:NamedIndividual ,
-                            fhkb:Person ;
-                   fhkb:birthYear 1870 ;
-                   fhkb:firstGivenName "William"^^xsd:string ;
-                   fhkb:secondGivenName "Rever"^^xsd:string .
-
-
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( fhkb:Henry_Edmund_Bright
-                        fhkb:Henry_Edmund_Bright_1887
-                      )
-] .
+###  http://www.semanticweb.org/lihekun/SANGUO#BianShi
+sg:BianShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Bian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaiMao
+sg:CaiMao rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cai"^^xsd:string ;
+          sg:firstGivenName "Mao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaiShi
+sg:CaiShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cai"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoAng
+sg:CaoAng rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Ang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoCao
+sg:CaoCao rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Cao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoChong
+sg:CaoChong rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Cao"^^xsd:string ;
+            sg:firstGivenName "Chong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoFang
+sg:CaoFang rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Fang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoHong
+sg:CaoHong rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Hong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoHua
+sg:CaoHua rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Jie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoJie
+sg:CaoJie rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Jie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoPi
+sg:CaoPi rdf:type owl:NamedIndividual ,
+                  sg:Person ;
+         sg:familyName "Cao"^^xsd:string ;
+         sg:firstGivenName "Pi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoRen
+sg:CaoRen rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Ren"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoRui
+sg:CaoRui rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Cao"^^xsd:string ;
+          sg:firstGivenName "Rui"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoSong
+sg:CaoSong rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Song"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoXian
+sg:CaoXian rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Xian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#CaoZhen
+sg:CaoZhen rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Cao"^^xsd:string ;
+           sg:firstGivenName "Zhen"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#DingShi
+sg:DingShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Ding"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#HuanShi
+sg:HuanShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Huan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#HuangZu
+sg:HuangZu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Huang"^^xsd:string ;
+           sg:firstGivenName "Zu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#KongRong
+sg:KongRong rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Kong"^^xsd:string ;
+            sg:firstGivenName "Rong"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuBiao
+sg:LiuBiao rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Liu"^^xsd:string ;
+           sg:firstGivenName "Biao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuShi
+sg:LiuShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Liu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuXie
+sg:LiuXie rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Liu"^^xsd:string ;
+          sg:firstGivenName "Xie"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#LiuZhang
+sg:LiuZhang rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Liu"^^xsd:string ;
+            sg:firstGivenName "Zhang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#MaoShi
+sg:MaoShi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Mao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaYan
+sg:SimaYan rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Sima"^^xsd:string ;
+           sg:firstGivenName "Yan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaYi
+sg:SimaYi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Sima"^^xsd:string ;
+          sg:firstGivenName "Yi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#SimaZhao
+sg:SimaZhao rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Sima"^^xsd:string ;
+            sg:firstGivenName "Zhao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#TaoQian
+sg:TaoQian rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Tao"^^xsd:string ;
+           sg:firstGivenName "Qian"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#WenPing
+sg:WenPing rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Wen"^^xsd:string ;
+           sg:firstGivenName "Ping"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#XiaHouyuan
+sg:XiaHouyuan rdf:type owl:NamedIndividual ,
+                       sg:Person ;
+              sg:familyName "Xia"^^xsd:string ;
+              sg:firstGivenName "Houyuan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#Xiahoudun
+sg:Xiahoudun rdf:type owl:NamedIndividual ,
+                      sg:Person ;
+             sg:familyName "Xia"^^xsd:string ;
+             sg:firstGivenName "Houdun"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShang
+sg:YuanShang rdf:type owl:NamedIndividual ,
+                      sg:Person ;
+             sg:familyName "Yuan"^^xsd:string ;
+             sg:firstGivenName "Shang"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShao
+sg:YuanShao rdf:type owl:NamedIndividual ,
+                     sg:Person ;
+            sg:familyName "Yuan"^^xsd:string ;
+            sg:firstGivenName "Shao"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanShu
+sg:YuanShu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Yuan"^^xsd:string ;
+           sg:firstGivenName "Shu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanTan
+sg:YuanTan rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Yuan"^^xsd:string ;
+           sg:firstGivenName "Tan"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#YuanXi
+sg:YuanXi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Yuan"^^xsd:string ;
+          sg:firstGivenName "Xi"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhangLu
+sg:ZhangLu rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Zhang"^^xsd:string ;
+           sg:firstGivenName "Lu"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhenJi
+sg:ZhenJi rdf:type owl:NamedIndividual ,
+                   sg:Person ;
+          sg:familyName "Zhen"^^xsd:string ;
+          sg:firstGivenName "Ji"^^xsd:string .
+
+
+###  http://www.semanticweb.org/lihekun/SANGUO#ZhouShi
+sg:ZhouShi rdf:type owl:NamedIndividual ,
+                    sg:Person ;
+           sg:familyName "Zhou"^^xsd:string .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
